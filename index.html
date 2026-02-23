@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Community Art Map</title>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <style>
+      html,
+      body,
+      #map {
+        height: 100%;
+        margin: 0;
+      }
+
+      .popup-title {
+        font-weight: 700;
+        margin: 0 0 6px;
+      }
+
+      .popup-notes {
+        margin: 0;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="map"></div>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+
+    <script>
+      // Basemap (Stamen Watercolor via Stadia Maps)
+      const STADIA_KEY = "";
+      const watercolorUrl =
+        "https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg" +
+        (STADIA_KEY ? "?api_key=" + encodeURIComponent(STADIA_KEY) : "");
+
+      const map = L.map("map", { zoomControl: true }).setView([34.19, -118.13], 13);
+
+      L.tileLayer(watercolorUrl, {
+        maxZoom: 16,
+        attribution:
+          "Map tiles by Stamen Design, hosted by Stadia Maps. Data © OpenStreetMap contributors."
+      }).addTo(map);
+
+      fetch("./public/data/art.geojson")
+        .then((r) => r.json())
+        .then((gj) => {
+          const layer = L.geoJSON(gj, {
+            onEachFeature: (feature, l) => {
+              const p = feature.properties || {};
+              const title = (p.title || p.name || "").trim();
+              const notes = (p.notes || p.description || "").trim();
+
+              const html =
+                (title ? `<div class="popup-title">${escapeHtml(title)}</div>` : "") +
+                (notes ? `<p class="popup-notes">${escapeHtml(notes)}</p>` : "");
+
+              if (html) l.bindPopup(html, { maxWidth: 320 });
+            }
+          }).addTo(map);
+
+          const bounds = layer.getBounds();
+          if (bounds.isValid()) map.fitBounds(bounds.pad(0.15));
+        })
+        .catch((err) => console.error("Failed to load GeoJSON:", err));
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+    </script>
+  </body>
+</html>

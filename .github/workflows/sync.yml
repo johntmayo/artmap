@@ -1,0 +1,41 @@
+name: Sync My Maps KML to GeoJSON
+
+on:
+  schedule:
+    - cron: "7 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install
+        run: npm ci || npm install
+
+      - name: Sync
+        env:
+          KML_URL: ${{ secrets.KML_URL }}
+        run: npm run sync
+
+      - name: Commit changes if any
+        run: |
+          git config user.name "kml-sync-bot"
+          git config user.email "kml-sync-bot@users.noreply.github.com"
+          git add public/data/art.geojson
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "Auto-sync My Maps data"
+            git push
+          fi
