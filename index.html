@@ -133,10 +133,6 @@
         border: 1px solid rgba(80, 56, 25, 0.2);
       }
 
-      .leaflet-top.leaflet-left .map-title-control {
-        margin-left: 54px;
-      }
-
       .map-title-control h1 {
         margin: 0;
         color: #402515;
@@ -177,13 +173,6 @@
         border: 1px solid rgba(0, 0, 0, 0.1);
       }
 
-      .category-filter-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-      }
-
       .category-filter-title {
         margin: 0;
         color: #2a2a2a;
@@ -192,21 +181,8 @@
         text-transform: uppercase;
       }
 
-      .category-filter-toggle {
-        border: 0;
-        background: transparent;
-        color: #5c5c5c;
-        font: 700 13px/1 "Nunito", "Segoe UI", sans-serif;
-        cursor: pointer;
-        padding: 2px 0;
-      }
-
       .category-filter-panel {
         margin-top: 8px;
-      }
-
-      .category-filter-control.is-collapsed .category-filter-panel {
-        display: none;
       }
 
       .category-filter-item {
@@ -290,12 +266,12 @@
 
       @media (max-width: 800px) {
         .leaflet-top.leaflet-left .map-title-control {
-          margin-left: 52px;
+          margin-left: 0;
           margin-top: 10px;
         }
 
         .map-title-control {
-          max-width: calc(100vw - 130px);
+          max-width: 56vw;
           padding: 8px 10px;
         }
 
@@ -309,9 +285,29 @@
           display: none;
         }
 
+        .leaflet-top.leaflet-left .category-filter-control {
+          margin-left: calc(56vw + 8px);
+          margin-top: 10px;
+        }
+
         .category-filter-control {
-          min-width: 170px;
-          max-width: 200px;
+          min-width: 132px;
+          max-width: 150px;
+          padding: 8px;
+        }
+
+        .category-filter-title {
+          font-size: 12px;
+        }
+
+        .category-filter-item {
+          gap: 6px;
+          margin: 4px 0;
+          font-size: 12px;
+        }
+
+        .category-filter-count {
+          display: none;
         }
       }
     </style>
@@ -347,7 +343,7 @@
         "https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg" +
         (STADIA_KEY ? "?api_key=" + encodeURIComponent(STADIA_KEY) : "");
 
-      const map = L.map("map", { zoomControl: true, attributionControl: false }).setView([34.19, -118.13], 13);
+      const map = L.map("map", { zoomControl: false, attributionControl: false }).setView([34.19, -118.13], 13);
 
       const osmFallback = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 20
@@ -473,7 +469,11 @@
           const el = L.DomUtil.create("section", "legal-control is-collapsed");
           el.innerHTML = `
             <button type="button" class="legal-toggle">Map credits</button>
-            <div class="legal-details">© OpenStreetMap contributors • Stamen watercolor via Stadia Maps • Labels by CARTO</div>
+            <div class="legal-details">
+              Map created by
+              <a href="https://sites.google.com/view/joysquadcentral/home" target="_blank" rel="noopener noreferrer">Altadena Joy Squad</a>.<br />
+              © OpenStreetMap contributors • Stamen watercolor via Stadia Maps • Labels by CARTO
+            </div>
           `;
 
           const toggleBtn = el.querySelector(".legal-toggle");
@@ -488,23 +488,17 @@
       }
 
       function createCategoryFilterControl(categoryLayers, categoryCounts) {
-        const control = L.control({ position: "topright" });
+        const isMobile = window.matchMedia("(max-width: 800px)").matches;
+        const control = L.control({ position: isMobile ? "topleft" : "topright" });
 
         control.onAdd = () => {
           const el = L.DomUtil.create("section", "category-filter-control");
-          const isMobile = window.matchMedia("(max-width: 800px)").matches;
-          if (isMobile) el.classList.add("is-collapsed");
-
           el.innerHTML = `
-            <div class="category-filter-header">
-              <h2 class="category-filter-title">Show Categories</h2>
-              <button type="button" class="category-filter-toggle">${isMobile ? "Show" : "Hide"}</button>
-            </div>
+            <h2 class="category-filter-title">Categories</h2>
             <div class="category-filter-panel"></div>
           `;
 
           const panel = el.querySelector(".category-filter-panel");
-          const toggleBtn = el.querySelector(".category-filter-toggle");
 
           for (const [key, cfg] of Object.entries(CATEGORY_CONFIG)) {
             const count = categoryCounts.get(key) || 0;
@@ -528,11 +522,6 @@
 
             panel.appendChild(row);
           }
-
-          toggleBtn.addEventListener("click", () => {
-            el.classList.toggle("is-collapsed");
-            toggleBtn.textContent = el.classList.contains("is-collapsed") ? "Show" : "Hide";
-          });
 
           L.DomEvent.disableClickPropagation(el);
           L.DomEvent.disableScrollPropagation(el);
