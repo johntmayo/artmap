@@ -133,6 +133,10 @@
         border: 1px solid rgba(80, 56, 25, 0.2);
       }
 
+      .leaflet-top.leaflet-left .map-title-control {
+        margin-left: 54px;
+      }
+
       .map-title-control h1 {
         margin: 0;
         color: #402515;
@@ -166,19 +170,43 @@
       .category-filter-control {
         min-width: 210px;
         max-width: min(80vw, 260px);
-        padding: 10px 12px;
+        padding: 8px 10px;
         border-radius: 12px;
         background: rgba(255, 255, 255, 0.94);
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.24);
         border: 1px solid rgba(0, 0, 0, 0.1);
       }
 
+      .category-filter-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
       .category-filter-title {
-        margin: 0 0 8px;
+        margin: 0;
         color: #2a2a2a;
         font: 800 13px/1.2 "Nunito", "Segoe UI", sans-serif;
         letter-spacing: 0.03em;
         text-transform: uppercase;
+      }
+
+      .category-filter-toggle {
+        border: 0;
+        background: transparent;
+        color: #5c5c5c;
+        font: 700 13px/1 "Nunito", "Segoe UI", sans-serif;
+        cursor: pointer;
+        padding: 2px 0;
+      }
+
+      .category-filter-panel {
+        margin-top: 8px;
+      }
+
+      .category-filter-control.is-collapsed .category-filter-panel {
+        display: none;
       }
 
       .category-filter-item {
@@ -229,6 +257,63 @@
         border: 2px solid rgba(255, 255, 255, 0.9);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
       }
+
+      .legal-control {
+        max-width: min(72vw, 320px);
+        padding: 7px 10px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.94);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+        color: #2f2f2f;
+        font: 700 12px/1.2 "Nunito", "Segoe UI", sans-serif;
+      }
+
+      .legal-control button {
+        border: 0;
+        background: transparent;
+        color: #2f2f2f;
+        font: inherit;
+        cursor: pointer;
+        padding: 0;
+      }
+
+      .legal-control.is-collapsed .legal-details {
+        display: none;
+      }
+
+      .legal-details {
+        margin-top: 6px;
+        color: #4b4b4b;
+        font-weight: 600;
+      }
+
+      @media (max-width: 800px) {
+        .leaflet-top.leaflet-left .map-title-control {
+          margin-left: 52px;
+          margin-top: 10px;
+        }
+
+        .map-title-control {
+          max-width: calc(100vw - 130px);
+          padding: 8px 10px;
+        }
+
+        .map-title-control h1 {
+          font-size: clamp(20px, 7vw, 34px);
+          line-height: 0.95;
+        }
+
+        .map-title-control > p,
+        .map-contribute {
+          display: none;
+        }
+
+        .category-filter-control {
+          min-width: 170px;
+          max-width: 200px;
+        }
+      }
     </style>
   </head>
 
@@ -262,11 +347,10 @@
         "https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg" +
         (STADIA_KEY ? "?api_key=" + encodeURIComponent(STADIA_KEY) : "");
 
-      const map = L.map("map", { zoomControl: true }).setView([34.19, -118.13], 13);
+      const map = L.map("map", { zoomControl: true, attributionControl: false }).setView([34.19, -118.13], 13);
 
       const osmFallback = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 20,
-        attribution: "© OpenStreetMap contributors"
+        maxZoom: 20
       }).addTo(map);
 
       const watercolorLayer = L.tileLayer(watercolorUrl, {
@@ -278,8 +362,7 @@
         // Keep fallback base visible when watercolor tiles fail.
         errorTileUrl:
           "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=",
-        attribution:
-          "Map tiles by Stamen Design, hosted by Stadia Maps. Data © OpenStreetMap contributors."
+        attribution: ""
       }).addTo(map);
 
       watercolorLayer.on("tileerror", () => {
@@ -291,7 +374,7 @@
         {
           subdomains: "abcd",
           maxZoom: 20,
-          attribution: "© OpenStreetMap contributors © CARTO",
+          attribution: "",
           pane: "overlayPane"
         }
       ).addTo(map);
@@ -307,6 +390,7 @@
         .addTo(map);
 
       createTitleControl().addTo(map);
+      createLegalControl().addTo(map);
 
       fetch("./public/data/art.geojson")
         .then((r) => r.json())
@@ -383,12 +467,44 @@
         return control;
       }
 
+      function createLegalControl() {
+        const control = L.control({ position: "bottomleft" });
+        control.onAdd = () => {
+          const el = L.DomUtil.create("section", "legal-control is-collapsed");
+          el.innerHTML = `
+            <button type="button" class="legal-toggle">Map credits</button>
+            <div class="legal-details">© OpenStreetMap contributors • Stamen watercolor via Stadia Maps • Labels by CARTO</div>
+          `;
+
+          const toggleBtn = el.querySelector(".legal-toggle");
+          toggleBtn.addEventListener("click", () => {
+            el.classList.toggle("is-collapsed");
+          });
+
+          L.DomEvent.disableClickPropagation(el);
+          return el;
+        };
+        return control;
+      }
+
       function createCategoryFilterControl(categoryLayers, categoryCounts) {
         const control = L.control({ position: "topright" });
 
         control.onAdd = () => {
           const el = L.DomUtil.create("section", "category-filter-control");
-          el.innerHTML = `<h2 class="category-filter-title">Show Categories</h2>`;
+          const isMobile = window.matchMedia("(max-width: 800px)").matches;
+          if (isMobile) el.classList.add("is-collapsed");
+
+          el.innerHTML = `
+            <div class="category-filter-header">
+              <h2 class="category-filter-title">Show Categories</h2>
+              <button type="button" class="category-filter-toggle">${isMobile ? "Show" : "Hide"}</button>
+            </div>
+            <div class="category-filter-panel"></div>
+          `;
+
+          const panel = el.querySelector(".category-filter-panel");
+          const toggleBtn = el.querySelector(".category-filter-toggle");
 
           for (const [key, cfg] of Object.entries(CATEGORY_CONFIG)) {
             const count = categoryCounts.get(key) || 0;
@@ -410,8 +526,13 @@
               else map.removeLayer(layer);
             });
 
-            el.appendChild(row);
+            panel.appendChild(row);
           }
+
+          toggleBtn.addEventListener("click", () => {
+            el.classList.toggle("is-collapsed");
+            toggleBtn.textContent = el.classList.contains("is-collapsed") ? "Show" : "Hide";
+          });
 
           L.DomEvent.disableClickPropagation(el);
           L.DomEvent.disableScrollPropagation(el);
