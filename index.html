@@ -215,6 +215,7 @@
         const trimmed = url.trim();
         if (!trimmed) return "";
         if (/^https:\/\//i.test(trimmed)) return trimmed;
+        if (/^(?:\.\/|\/)/.test(trimmed) && !trimmed.startsWith("//")) return trimmed;
         return "";
       }
 
