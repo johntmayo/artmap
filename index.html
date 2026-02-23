@@ -28,6 +28,18 @@
         margin: 0;
         white-space: pre-wrap;
       }
+
+      .popup-notes img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 8px 0;
+        border-radius: 6px;
+      }
+
+      .popup-notes a {
+        color: #0b63ce;
+      }
     </style>
   </head>
 
@@ -95,11 +107,16 @@
             onEachFeature: (feature, l) => {
               const p = feature.properties || {};
               const title = asPlainText(p.title || p.name);
-              const notes = asPlainText(p.notes || p.description);
+              const notesHtml = asRichHtml(p.notes || p.description);
+              const notesText = asPlainText(p.notes || p.description);
 
               const html =
                 (title ? `<div class="popup-title">${escapeHtml(title)}</div>` : "") +
-                (notes ? `<p class="popup-notes">${escapeHtml(notes)}</p>` : "");
+                (notesHtml
+                  ? `<div class="popup-notes">${notesHtml}</div>`
+                  : notesText
+                    ? `<p class="popup-notes">${escapeHtml(notesText)}</p>`
+                    : "");
 
               if (html) l.bindPopup(html, { maxWidth: 320 });
             }
@@ -136,6 +153,68 @@
         const div = document.createElement("div");
         div.innerHTML = input;
         return div.textContent || div.innerText || "";
+      }
+
+      function asRichHtml(value) {
+        if (value == null) return "";
+
+        if (typeof value === "object" && typeof value.value === "string") {
+          return sanitizeRichHtml(value.value);
+        }
+
+        if (typeof value === "string" && /<[^>]+>/.test(value)) {
+          return sanitizeRichHtml(value);
+        }
+
+        return "";
+      }
+
+      function sanitizeRichHtml(rawHtml) {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(`<div>${rawHtml}</div>`, "text/html");
+        const root = doc.body.firstElementChild;
+        if (!root) return "";
+
+        const allowedTags = new Set(["BR", "P", "STRONG", "EM", "B", "I", "A", "IMG", "UL", "OL", "LI"]);
+        return Array.from(root.childNodes)
+          .map((n) => sanitizeNodeToHtml(n, allowedTags))
+          .join("");
+      }
+
+      function sanitizeNodeToHtml(node, allowedTags) {
+        if (node.nodeType === Node.TEXT_NODE) return escapeHtml(node.textContent || "");
+        if (node.nodeType !== Node.ELEMENT_NODE) return "";
+
+        const tag = node.tagName.toUpperCase();
+        const children = Array.from(node.childNodes)
+          .map((n) => sanitizeNodeToHtml(n, allowedTags))
+          .join("");
+
+        if (!allowedTags.has(tag)) return children;
+        if (tag === "BR") return "<br>";
+
+        if (tag === "IMG") {
+          const src = sanitizeUrl(node.getAttribute("src"));
+          if (!src) return "";
+          return `<img src="${escapeHtml(src)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" />`;
+        }
+
+        if (tag === "A") {
+          const href = sanitizeUrl(node.getAttribute("href"));
+          if (!href) return children;
+          return `<a href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${children || escapeHtml(href)}</a>`;
+        }
+
+        const lowerTag = tag.toLowerCase();
+        return `<${lowerTag}>${children}</${lowerTag}>`;
+      }
+
+      function sanitizeUrl(url) {
+        if (typeof url !== "string") return "";
+        const trimmed = url.trim();
+        if (!trimmed) return "";
+        if (/^https:\/\//i.test(trimmed)) return trimmed;
+        return "";
       }
 
       function markerColorFor(props) {
