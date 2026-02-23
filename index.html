@@ -109,7 +109,7 @@
 
       .popup-notes-text {
         color: #2f2418;
-        white-space: pre-wrap;
+        white-space: normal;
         overflow-wrap: anywhere;
         word-break: break-word;
         font: 600 16px/1.35 "Nunito", "Segoe UI", sans-serif;
@@ -549,7 +549,7 @@
       function buildPopupNotesBody(value) {
         const rich = asRichHtml(value);
         if (!rich) {
-          const textOnly = asPlainText(value);
+          const textOnly = normalizePlainText(asPlainText(value));
           const linkedText = linkifyPlainUrls(escapeHtml(textOnly));
           return linkedText ? `<p class="popup-notes-text">${linkedText}</p>` : "";
         }
@@ -566,7 +566,7 @@
 
         for (const img of root.querySelectorAll("img")) img.remove();
 
-        const textHtml = linkifyPlainUrls(root.innerHTML.trim());
+        const textHtml = normalizeTextHtml(linkifyPlainUrls(root.innerHTML));
         const galleryHtml = uniqueImageSrcs.length
           ? `<div class="popup-gallery ${uniqueImageSrcs.length === 1 ? "single" : ""}">${uniqueImageSrcs
               .map((src) => {
@@ -588,6 +588,23 @@
           (match, prefix, url) =>
             `${prefix}<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(url)}</a>`
         );
+      }
+
+      function normalizePlainText(text) {
+        return String(text || "")
+          .replace(/\r\n/g, "\n")
+          .replace(/\n{3,}/g, "\n\n")
+          .trim();
+      }
+
+      function normalizeTextHtml(html) {
+        if (!html) return "";
+
+        return String(html)
+          .replace(/^\s+|\s+$/g, "")
+          .replace(/^(?:\s|<br\s*\/?>|&nbsp;)+/gi, "")
+          .replace(/(?:\s|<br\s*\/?>|&nbsp;)+$/gi, "")
+          .replace(/(?:<br\s*\/?>\s*){3,}/gi, "<br><br>");
       }
 
       function normalizeHexColor(value) {
