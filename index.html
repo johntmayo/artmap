@@ -55,10 +55,43 @@
           "Map tiles by Stamen Design, hosted by Stadia Maps. Data © OpenStreetMap contributors."
       }).addTo(map);
 
+      // Transparent label layer so street names are readable over watercolor.
+      const labelsLayer = L.tileLayer(
+        "https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png",
+        {
+          subdomains: "abcd",
+          maxZoom: 20,
+          attribution:
+            "© OpenStreetMap contributors © CARTO",
+          pane: "overlayPane"
+        }
+      ).addTo(map);
+
+      L.control
+        .layers(
+          null,
+          {
+            "Street labels": labelsLayer
+          },
+          { collapsed: true }
+        )
+        .addTo(map);
+
       fetch("./public/data/art.geojson")
         .then((r) => r.json())
         .then((gj) => {
           const layer = L.geoJSON(gj, {
+            pointToLayer: (feature, latlng) => {
+              const p = feature.properties || {};
+              const fillColor = markerColorFor(p);
+              return L.circleMarker(latlng, {
+                radius: 7,
+                color: "#ffffff",
+                weight: 1.5,
+                fillColor,
+                fillOpacity: 0.95
+              });
+            },
             onEachFeature: (feature, l) => {
               const p = feature.properties || {};
               const title = asPlainText(p.title || p.name);
@@ -103,6 +136,27 @@
         const div = document.createElement("div");
         div.innerHTML = input;
         return div.textContent || div.innerText || "";
+      }
+
+      function markerColorFor(props) {
+        const iconColor = normalizeHexColor(props["icon-color"]);
+        if (iconColor) return iconColor;
+
+        const styleUrl = String(props.styleUrl || "").toUpperCase();
+        if (styleUrl.includes("FF5252")) return "#ff5252";
+        if (styleUrl.includes("F9A825")) return "#f9a825";
+        if (styleUrl.includes("A52714")) return "#a52714";
+        if (styleUrl.includes("0288D1")) return "#0288d1";
+
+        return "#444444";
+      }
+
+      function normalizeHexColor(value) {
+        if (typeof value !== "string") return "";
+        const v = value.trim();
+        if (/^#[0-9a-fA-F]{6}$/.test(v)) return v;
+        if (/^[0-9a-fA-F]{6}$/.test(v)) return "#" + v;
+        return "";
       }
     </script>
   </body>
