@@ -22,7 +22,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@500;600;700;800&display=swap"
     />
     <style>
       html,
@@ -67,7 +67,7 @@
       .popup-title {
         margin: 0;
         color: #3f2512;
-        font: 700 22px/1.02 "Cormorant Garamond", "Times New Roman", serif;
+        font: 800 22px/1.08 "Nunito", "Segoe UI", sans-serif;
         letter-spacing: 0.01em;
       }
 
@@ -110,7 +110,9 @@
       .popup-notes-text {
         color: #2f2418;
         white-space: pre-wrap;
-        font: 600 18px/1.25 "Cormorant Garamond", "Times New Roman", serif;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        font: 600 16px/1.35 "Nunito", "Segoe UI", sans-serif;
       }
 
       .popup-notes-text p {
@@ -144,7 +146,21 @@
       .map-title-control p {
         margin: 6px 0 0;
         color: #3e2f20;
-        font: 600 17px/1.15 "Cormorant Garamond", "Times New Roman", serif;
+        font: 700 15px/1.25 "Nunito", "Segoe UI", sans-serif;
+      }
+
+      .map-contribute {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(80, 56, 25, 0.18);
+        color: #3e2f20;
+        font: 600 14px/1.35 "Nunito", "Segoe UI", sans-serif;
+      }
+
+      .map-contribute a {
+        color: #5f2f0f;
+        font-weight: 700;
+        text-decoration: underline;
       }
 
       .category-filter-control {
@@ -160,7 +176,7 @@
       .category-filter-title {
         margin: 0 0 8px;
         color: #2a2a2a;
-        font: 600 14px/1.2 "Cormorant Garamond", "Times New Roman", serif;
+        font: 800 13px/1.2 "Nunito", "Segoe UI", sans-serif;
         letter-spacing: 0.03em;
         text-transform: uppercase;
       }
@@ -171,7 +187,7 @@
         gap: 8px;
         margin: 6px 0;
         color: #2f2f2f;
-        font: 600 14px/1.2 "Cormorant Garamond", "Times New Roman", serif;
+        font: 700 13px/1.25 "Nunito", "Segoe UI", sans-serif;
       }
 
       .category-filter-item input {
@@ -355,6 +371,11 @@
           el.innerHTML = `
             <h1>${escapeHtml(MAP_META.title)}</h1>
             <p>${escapeHtml(MAP_META.description)}</p>
+            <p class="map-contribute">
+              To add or update art, email
+              <a href="mailto:altadenajoysquad@gmail.com?subject=Add%20or%20Update%20Community%20Art%20Map&body=Hi!%0A%0AI'd%20like%20to%20add%20or%20update%20an%20entry.%0A%0AArtwork%20name:%0ALocation:%0APhoto(s):%0AArtist%20details%20(optional):%0AAdditional%20notes:%0A">altadenajoysquad@gmail.com</a>
+              with a photo, location, and any artist details.
+            </p>
           `;
           L.DomEvent.disableClickPropagation(el);
           return el;
@@ -529,7 +550,8 @@
         const rich = asRichHtml(value);
         if (!rich) {
           const textOnly = asPlainText(value);
-          return textOnly ? `<p class="popup-notes-text">${escapeHtml(textOnly)}</p>` : "";
+          const linkedText = linkifyPlainUrls(escapeHtml(textOnly));
+          return linkedText ? `<p class="popup-notes-text">${linkedText}</p>` : "";
         }
 
         const parser = new DOMParser();
@@ -544,7 +566,7 @@
 
         for (const img of root.querySelectorAll("img")) img.remove();
 
-        const textHtml = root.innerHTML.trim();
+        const textHtml = linkifyPlainUrls(root.innerHTML.trim());
         const galleryHtml = uniqueImageSrcs.length
           ? `<div class="popup-gallery ${uniqueImageSrcs.length === 1 ? "single" : ""}">${uniqueImageSrcs
               .map((src) => {
@@ -556,6 +578,16 @@
 
         const textBlockHtml = textHtml ? `<div class="popup-notes-text">${textHtml}</div>` : "";
         return `${galleryHtml}${textBlockHtml}`;
+      }
+
+      function linkifyPlainUrls(html) {
+        if (!html) return "";
+        const urlPattern = /(^|[\s(>])((https:\/\/[^\s<)]+))/gi;
+        return html.replace(
+          urlPattern,
+          (match, prefix, url) =>
+            `${prefix}<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(url)}</a>`
+        );
       }
 
       function normalizeHexColor(value) {
