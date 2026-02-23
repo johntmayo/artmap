@@ -11,6 +11,19 @@
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
       crossorigin=""
     />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin=""
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&display=swap"
+    />
     <style>
       html,
       body,
@@ -40,6 +53,99 @@
       .popup-notes a {
         color: #0b63ce;
       }
+
+      .map-title-control {
+        max-width: min(70vw, 520px);
+        padding: 14px 16px 12px;
+        border-radius: 14px;
+        background: rgba(255, 252, 245, 0.9);
+        box-shadow: 0 10px 28px rgba(25, 20, 15, 0.3);
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(80, 56, 25, 0.2);
+      }
+
+      .map-title-control h1 {
+        margin: 0;
+        color: #402515;
+        font-size: clamp(28px, 4.2vw, 46px);
+        line-height: 0.95;
+        letter-spacing: 0.02em;
+        font-family: "Great Vibes", "Times New Roman", serif;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+      }
+
+      .map-title-control p {
+        margin: 6px 0 0;
+        color: #3e2f20;
+        font: 600 17px/1.15 "Cormorant Garamond", "Times New Roman", serif;
+      }
+
+      .category-filter-control {
+        min-width: 210px;
+        max-width: min(80vw, 260px);
+        padding: 10px 12px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.24);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .category-filter-title {
+        margin: 0 0 8px;
+        color: #2a2a2a;
+        font: 600 14px/1.2 "Cormorant Garamond", "Times New Roman", serif;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+      }
+
+      .category-filter-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 6px 0;
+        color: #2f2f2f;
+        font: 600 14px/1.2 "Cormorant Garamond", "Times New Roman", serif;
+      }
+
+      .category-filter-item input {
+        margin: 0;
+      }
+
+      .category-filter-icon {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: inline-grid;
+        place-items: center;
+        color: #fff;
+        font-size: 12px;
+        background: var(--cat-color, #555);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+      }
+
+      .category-filter-label {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 6px;
+      }
+
+      .category-filter-count {
+        color: #666;
+        font-size: 12px;
+      }
+
+      .art-marker {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        font-size: 14px;
+        background: var(--marker-color, #555);
+        border: 2px solid rgba(255, 255, 255, 0.9);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+      }
     </style>
   </head>
 
@@ -53,6 +159,20 @@
     ></script>
 
     <script>
+      const MAP_META = {
+        title: "Urban Art of Altadena and surrounding areas",
+        description: "All the local art, official and unofficial."
+      };
+
+      const CATEGORY_CONFIG = {
+        paint: { label: "Paint", color: "#0288d1", icon: "🎨", visible: true },
+        statues: { label: "Statues", color: "#a52714", icon: "🗿", visible: true },
+        mixed: { label: "Mixed Media", color: "#f9a825", icon: "🧩", visible: true },
+        mosaics: { label: "Mosaics", color: "#ff5252", icon: "◼", visible: true },
+        interactive: { label: "Interactive", color: "#232323", icon: "✨", visible: true },
+        other: { label: "Other", color: "#666666", icon: "?", visible: false }
+      };
+
       // Basemap (Stamen Watercolor via Stadia Maps)
       const STADIA_KEY = "2e4ff880-1782-4c64-a908-c2a37db897fe";
       const watercolorUrl =
@@ -67,14 +187,12 @@
           "Map tiles by Stamen Design, hosted by Stadia Maps. Data © OpenStreetMap contributors."
       }).addTo(map);
 
-      // Transparent label layer so street names are readable over watercolor.
       const labelsLayer = L.tileLayer(
         "https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png",
         {
           subdomains: "abcd",
           maxZoom: 20,
-          attribution:
-            "© OpenStreetMap contributors © CARTO",
+          attribution: "© OpenStreetMap contributors © CARTO",
           pane: "overlayPane"
         }
       ).addTo(map);
@@ -85,47 +203,153 @@
           {
             "Street labels": labelsLayer
           },
-          { collapsed: true }
+          { collapsed: true, position: "bottomright" }
         )
         .addTo(map);
+
+      createTitleControl().addTo(map);
 
       fetch("./public/data/art.geojson")
         .then((r) => r.json())
         .then((gj) => {
-          const layer = L.geoJSON(gj, {
-            pointToLayer: (feature, latlng) => {
-              const p = feature.properties || {};
-              const fillColor = markerColorFor(p);
-              return L.circleMarker(latlng, {
-                radius: 7,
-                color: "#ffffff",
-                weight: 1.5,
-                fillColor,
-                fillOpacity: 0.95
-              });
-            },
-            onEachFeature: (feature, l) => {
-              const p = feature.properties || {};
-              const title = asPlainText(p.title || p.name);
-              const notesHtml = asRichHtml(p.notes || p.description);
-              const notesText = asPlainText(p.notes || p.description);
+          const features = gj.features || [];
+          const categoryLayers = new Map();
+          const categoryCounts = new Map();
+          const boundsCollector = L.featureGroup();
 
-              const html =
-                (title ? `<div class="popup-title">${escapeHtml(title)}</div>` : "") +
-                (notesHtml
-                  ? `<div class="popup-notes">${notesHtml}</div>`
-                  : notesText
-                    ? `<p class="popup-notes">${escapeHtml(notesText)}</p>`
-                    : "");
-
-              if (html) l.bindPopup(html, { maxWidth: 320 });
+          for (const key of Object.keys(CATEGORY_CONFIG)) {
+            categoryLayers.set(key, L.layerGroup());
+            categoryCounts.set(key, 0);
+            if (CATEGORY_CONFIG[key].visible) {
+              categoryLayers.get(key).addTo(map);
             }
-          }).addTo(map);
+          }
 
-          const bounds = layer.getBounds();
+          for (const feature of features) {
+            const categoryKey = detectCategory(feature);
+            categoryCounts.set(categoryKey, (categoryCounts.get(categoryKey) || 0) + 1);
+
+            const featureLayer = L.geoJSON(feature, {
+              pointToLayer: (f, latlng) => makePointMarker(f, latlng, categoryKey),
+              style: () => ({
+                color: CATEGORY_CONFIG[categoryKey].color,
+                weight: 2,
+                fillColor: CATEGORY_CONFIG[categoryKey].color,
+                fillOpacity: 0.25
+              }),
+              onEachFeature: (f, l) => {
+                const p = f.properties || {};
+                const title = asPlainText(p.title || p.name);
+                const notesHtml = asRichHtml(p.notes || p.description);
+                const notesText = asPlainText(p.notes || p.description);
+
+                const html =
+                  (title ? `<div class="popup-title">${escapeHtml(title)}</div>` : "") +
+                  (notesHtml
+                    ? `<div class="popup-notes">${notesHtml}</div>`
+                    : notesText
+                      ? `<p class="popup-notes">${escapeHtml(notesText)}</p>`
+                      : "");
+
+                if (html) l.bindPopup(html, { maxWidth: 340 });
+              }
+            });
+
+            featureLayer.addTo(categoryLayers.get(categoryKey));
+            boundsCollector.addLayer(featureLayer);
+          }
+
+          createCategoryFilterControl(categoryLayers, categoryCounts).addTo(map);
+
+          const bounds = boundsCollector.getBounds();
           if (bounds.isValid()) map.fitBounds(bounds.pad(0.15));
         })
         .catch((err) => console.error("Failed to load GeoJSON:", err));
+
+      function createTitleControl() {
+        const control = L.control({ position: "topleft" });
+        control.onAdd = () => {
+          const el = L.DomUtil.create("section", "map-title-control");
+          el.innerHTML = `
+            <h1>${escapeHtml(MAP_META.title)}</h1>
+            <p>${escapeHtml(MAP_META.description)}</p>
+          `;
+          L.DomEvent.disableClickPropagation(el);
+          return el;
+        };
+        return control;
+      }
+
+      function createCategoryFilterControl(categoryLayers, categoryCounts) {
+        const control = L.control({ position: "topright" });
+
+        control.onAdd = () => {
+          const el = L.DomUtil.create("section", "category-filter-control");
+          el.innerHTML = `<h2 class="category-filter-title">Show Categories</h2>`;
+
+          for (const [key, cfg] of Object.entries(CATEGORY_CONFIG)) {
+            const count = categoryCounts.get(key) || 0;
+            if (!count) continue;
+
+            const row = document.createElement("label");
+            row.className = "category-filter-item";
+            row.innerHTML = `
+              <input type="checkbox" ${map.hasLayer(categoryLayers.get(key)) ? "checked" : ""} />
+              <span class="category-filter-icon" style="--cat-color:${cfg.color}">${cfg.icon}</span>
+              <span class="category-filter-label">${cfg.label} <span class="category-filter-count">(${count})</span></span>
+            `;
+
+            const input = row.querySelector("input");
+            input.addEventListener("change", () => {
+              const layer = categoryLayers.get(key);
+              if (!layer) return;
+              if (input.checked) layer.addTo(map);
+              else map.removeLayer(layer);
+            });
+
+            el.appendChild(row);
+          }
+
+          L.DomEvent.disableClickPropagation(el);
+          L.DomEvent.disableScrollPropagation(el);
+          return el;
+        };
+
+        return control;
+      }
+
+      function makePointMarker(feature, latlng, categoryKey) {
+        const cfg = CATEGORY_CONFIG[categoryKey] || CATEGORY_CONFIG.other;
+        const icon = L.divIcon({
+          className: "",
+          html: `<span class="art-marker" style="--marker-color:${cfg.color}">${cfg.icon}</span>`,
+          iconSize: [26, 26],
+          iconAnchor: [13, 13],
+          popupAnchor: [0, -10]
+        });
+        return L.marker(latlng, { icon });
+      }
+
+      function detectCategory(feature) {
+        const p = feature.properties || {};
+        const title = asPlainText(p.title || p.name).toLowerCase();
+        const notes = asPlainText(p.notes || p.description).toLowerCase();
+        const blob = `${title} ${notes}`;
+        const iconColor = normalizeHexColor(p["icon-color"]).toLowerCase();
+        const styleUrl = String(p.styleUrl || "").toUpperCase();
+
+        if (blob.includes("interactive")) return "interactive";
+        if (iconColor === "#0288d1" || styleUrl.includes("0288D1")) return "paint";
+        if (iconColor === "#a52714" || styleUrl.includes("A52714")) return "statues";
+        if (iconColor === "#f9a825" || styleUrl.includes("F9A825")) return "mixed";
+        if (iconColor === "#ff5252" || styleUrl.includes("FF5252")) return "mosaics";
+
+        if (["Polygon", "MultiPolygon"].includes(feature.geometry?.type || "")) {
+          return "interactive";
+        }
+
+        return "other";
+      }
 
       function escapeHtml(str) {
         return String(str)
@@ -217,19 +441,6 @@
         if (/^https:\/\//i.test(trimmed)) return trimmed;
         if (/^(?:\.\/|\/)/.test(trimmed) && !trimmed.startsWith("//")) return trimmed;
         return "";
-      }
-
-      function markerColorFor(props) {
-        const iconColor = normalizeHexColor(props["icon-color"]);
-        if (iconColor) return iconColor;
-
-        const styleUrl = String(props.styleUrl || "").toUpperCase();
-        if (styleUrl.includes("FF5252")) return "#ff5252";
-        if (styleUrl.includes("F9A825")) return "#f9a825";
-        if (styleUrl.includes("A52714")) return "#a52714";
-        if (styleUrl.includes("0288D1")) return "#0288d1";
-
-        return "#444444";
       }
 
       function normalizeHexColor(value) {
