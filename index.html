@@ -32,15 +32,50 @@
         margin: 0;
       }
 
+      .leaflet-popup.art-popup .leaflet-popup-content-wrapper {
+        border-radius: 14px;
+        padding: 0;
+        background: #fffefb;
+        box-shadow: 0 14px 28px rgba(18, 13, 9, 0.35);
+        border: 1px solid rgba(59, 39, 18, 0.2);
+      }
+
+      .leaflet-popup.art-popup .leaflet-popup-content {
+        margin: 0;
+      }
+
+      .leaflet-popup.art-popup .leaflet-popup-tip {
+        background: #fffefb;
+        box-shadow: 0 10px 18px rgba(18, 13, 9, 0.22);
+      }
+
+      .leaflet-popup.art-popup .leaflet-popup-close-button {
+        color: #55351a;
+        right: 8px;
+        top: 6px;
+      }
+
+      .popup-card {
+        width: min(68vw, 360px);
+      }
+
+      .popup-header {
+        padding: 12px 34px 8px 12px;
+        border-bottom: 1px solid rgba(70, 48, 26, 0.12);
+      }
+
       .popup-title {
-        font-weight: 700;
-        margin: 0 0 6px;
+        margin: 0;
+        color: #3f2512;
+        font: 700 22px/1.02 "Cormorant Garamond", "Times New Roman", serif;
+        letter-spacing: 0.01em;
       }
 
       .popup-notes {
         margin: 0;
         display: grid;
-        gap: 8px;
+        gap: 10px;
+        padding: 10px 12px 12px;
       }
 
       .popup-gallery {
@@ -55,19 +90,31 @@
 
       .popup-photo-link {
         display: block;
-        border-radius: 6px;
+        border-radius: 8px;
         overflow: hidden;
         line-height: 0;
+        background: #e6d8c3;
       }
 
       .popup-photo-link img {
         display: block;
         width: 100%;
-        height: auto;
+        height: 108px;
+        object-fit: cover;
+      }
+
+      .popup-gallery.single .popup-photo-link img {
+        height: 220px;
       }
 
       .popup-notes-text {
+        color: #2f2418;
         white-space: pre-wrap;
+        font: 600 18px/1.25 "Cormorant Garamond", "Times New Roman", serif;
+      }
+
+      .popup-notes-text p {
+        margin: 0;
       }
 
       .popup-notes-text a {
@@ -279,10 +326,14 @@
                 const notesBody = buildPopupNotesBody(p.notes || p.description);
 
                 const html =
-                  (title ? `<div class="popup-title">${escapeHtml(title)}</div>` : "") +
-                  (notesBody ? `<div class="popup-notes">${notesBody}</div>` : "");
+                  `<article class="popup-card">` +
+                  (title ? `<header class="popup-header"><h3 class="popup-title">${escapeHtml(title)}</h3></header>` : "") +
+                  (notesBody ? `<section class="popup-notes">${notesBody}</section>` : "") +
+                  `</article>`;
 
-                if (html) l.bindPopup(html, { maxWidth: 340 });
+                if (title || notesBody) {
+                  l.bindPopup(html, { maxWidth: 420, className: "art-popup" });
+                }
               }
             });
 
