@@ -196,7 +196,8 @@
         if (tag === "IMG") {
           const src = sanitizeUrl(node.getAttribute("src"));
           if (!src) return "";
-          return `<img src="${escapeHtml(src)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" />`;
+          const safeSrc = escapeHtml(src);
+          return `<img src="${safeSrc}" loading="lazy" decoding="async" /><p><a href="${safeSrc}" target="_blank" rel="noopener noreferrer">Open photo</a></p>`;
         }
 
         if (tag === "A") {
