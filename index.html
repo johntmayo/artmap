@@ -61,8 +61,8 @@
           const layer = L.geoJSON(gj, {
             onEachFeature: (feature, l) => {
               const p = feature.properties || {};
-              const title = (p.title || p.name || "").trim();
-              const notes = (p.notes || p.description || "").trim();
+              const title = asPlainText(p.title || p.name);
+              const notes = asPlainText(p.notes || p.description);
 
               const html =
                 (title ? `<div class="popup-title">${escapeHtml(title)}</div>` : "") +
@@ -84,6 +84,25 @@
           .replaceAll(">", "&gt;")
           .replaceAll('"', "&quot;")
           .replaceAll("'", "&#039;");
+      }
+
+      function asPlainText(value) {
+        if (value == null) return "";
+        if (typeof value === "string") return value.trim();
+
+        // My Maps KML often encodes description as { "@type": "html", "value": "<img ...>" }
+        if (typeof value === "object") {
+          const raw = typeof value.value === "string" ? value.value : JSON.stringify(value);
+          return stripHtml(raw).trim();
+        }
+
+        return String(value).trim();
+      }
+
+      function stripHtml(input) {
+        const div = document.createElement("div");
+        div.innerHTML = input;
+        return div.textContent || div.innerText || "";
       }
     </script>
   </body>
