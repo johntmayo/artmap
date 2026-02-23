@@ -39,18 +39,38 @@
 
       .popup-notes {
         margin: 0;
+        display: grid;
+        gap: 8px;
+      }
+
+      .popup-gallery {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .popup-gallery.single {
+        grid-template-columns: 1fr;
+      }
+
+      .popup-photo-link {
+        display: block;
+        border-radius: 6px;
+        overflow: hidden;
+        line-height: 0;
+      }
+
+      .popup-photo-link img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .popup-notes-text {
         white-space: pre-wrap;
       }
 
-      .popup-notes img {
-        display: block;
-        max-width: 100%;
-        height: auto;
-        margin: 8px 0;
-        border-radius: 6px;
-      }
-
-      .popup-notes a {
+      .popup-notes-text a {
         color: #0b63ce;
       }
 
@@ -181,11 +201,27 @@
 
       const map = L.map("map", { zoomControl: true }).setView([34.19, -118.13], 13);
 
-      L.tileLayer(watercolorUrl, {
-        maxZoom: 16,
+      const osmFallback = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 20,
+        attribution: "© OpenStreetMap contributors"
+      }).addTo(map);
+
+      const watercolorLayer = L.tileLayer(watercolorUrl, {
+        // Watercolor has finite native coverage; scale native tiles at higher zooms.
+        maxNativeZoom: 16,
+        maxZoom: 20,
+        opacity: 0.92,
+        crossOrigin: true,
+        // Keep fallback base visible when watercolor tiles fail.
+        errorTileUrl:
+          "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=",
         attribution:
           "Map tiles by Stamen Design, hosted by Stadia Maps. Data © OpenStreetMap contributors."
       }).addTo(map);
+
+      watercolorLayer.on("tileerror", () => {
+        // Avoid noisy console floods in production; fallback layer is underneath.
+      });
 
       const labelsLayer = L.tileLayer(
         "https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png",
@@ -240,16 +276,11 @@
               onEachFeature: (f, l) => {
                 const p = f.properties || {};
                 const title = asPlainText(p.title || p.name);
-                const notesHtml = asRichHtml(p.notes || p.description);
-                const notesText = asPlainText(p.notes || p.description);
+                const notesBody = buildPopupNotesBody(p.notes || p.description);
 
                 const html =
                   (title ? `<div class="popup-title">${escapeHtml(title)}</div>` : "") +
-                  (notesHtml
-                    ? `<div class="popup-notes">${notesHtml}</div>`
-                    : notesText
-                      ? `<p class="popup-notes">${escapeHtml(notesText)}</p>`
-                      : "");
+                  (notesBody ? `<div class="popup-notes">${notesBody}</div>` : "");
 
                 if (html) l.bindPopup(html, { maxWidth: 340 });
               }
@@ -421,7 +452,7 @@
           const src = sanitizeUrl(node.getAttribute("src"));
           if (!src) return "";
           const safeSrc = escapeHtml(src);
-          return `<img src="${safeSrc}" loading="lazy" decoding="async" /><p><a href="${safeSrc}" target="_blank" rel="noopener noreferrer">Open photo</a></p>`;
+          return `<img src="${safeSrc}" loading="lazy" decoding="async" />`;
         }
 
         if (tag === "A") {
@@ -441,6 +472,39 @@
         if (/^https:\/\//i.test(trimmed)) return trimmed;
         if (/^(?:\.\/|\/)/.test(trimmed) && !trimmed.startsWith("//")) return trimmed;
         return "";
+      }
+
+      function buildPopupNotesBody(value) {
+        const rich = asRichHtml(value);
+        if (!rich) {
+          const textOnly = asPlainText(value);
+          return textOnly ? `<p class="popup-notes-text">${escapeHtml(textOnly)}</p>` : "";
+        }
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(`<div>${rich}</div>`, "text/html");
+        const root = doc.body.firstElementChild;
+        if (!root) return "";
+
+        const imageSrcs = Array.from(root.querySelectorAll("img"))
+          .map((img) => sanitizeUrl(img.getAttribute("src")))
+          .filter(Boolean);
+        const uniqueImageSrcs = Array.from(new Set(imageSrcs));
+
+        for (const img of root.querySelectorAll("img")) img.remove();
+
+        const textHtml = root.innerHTML.trim();
+        const galleryHtml = uniqueImageSrcs.length
+          ? `<div class="popup-gallery ${uniqueImageSrcs.length === 1 ? "single" : ""}">${uniqueImageSrcs
+              .map((src) => {
+                const safe = escapeHtml(src);
+                return `<a class="popup-photo-link" href="${safe}" target="_blank" rel="noopener noreferrer"><img src="${safe}" loading="lazy" decoding="async" /></a>`;
+              })
+              .join("")}</div>`
+          : "";
+
+        const textBlockHtml = textHtml ? `<div class="popup-notes-text">${textHtml}</div>` : "";
+        return `${galleryHtml}${textBlockHtml}`;
       }
 
       function normalizeHexColor(value) {
