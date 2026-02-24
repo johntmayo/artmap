@@ -12,10 +12,10 @@
         ]
       },
       "properties": {
-        "name": "Altadena Forever by Austin Scott",
+        "name": "Altadena Forever Mural",
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/b25a164f58a200dc67671cf89832c976f04e7bdc.png\" height=\"200\" width=\"auto\" /><br><br>https://unincorporated.coffee/pages/unincorporated-mural-project"
+          "value": "<img src=\"./public/media/cfa2c43e130eaa61aea6130926230b6b2919d8a1.png\" height=\"200\" width=\"auto\" /><br><br>By Austin Scott  https://unincorporated.coffee/pages/unincorporated-mural-project"
         },
         "styleUrl": "#icon-1509-0288D1",
         "label-scale": 0,
@@ -23,11 +23,11 @@
         "icon-color": "#0288d1",
         "icon-scale": 1,
         "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png",
-        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X5Gf3r9M45EbzH0I0trt9cHW-h8sunabOICzn40am4v7w2sU3vGHEzR8Qj0FsCSowcOZxtzEhBdh2k-vNvu6HI7jOXYS3SoTtJjNc_1D2w0Mm1LeNBAkCMb-VjeYoPBcMtGQFCm5qWtpeYRnuK3zaPaoaVFM7qkniK5hCI2BTr4r_woC32cl5ZB862h7ZyOMci7RH89ZX2kX6Egzvn2JvAbC3pPMuRKHZ280d93bZwAvc9sOJ9VKb3ZoGw?fife=s16383",
-        "title": "Altadena Forever by Austin Scott",
+        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X6GXPDXLuwaxqidDGGlsZVRVd5fjL4JyVEeiyuQeG5LjhY_RZ-rRLobpmMcEzhuOwXRsHff24nOVafYuOJdE5WoN07lqbDOE3jdhKgvVw671fVDHclYnx15P2KqUzr1p6TggEm7v0kyXJIGdceBLM5FoZrOu0OjyGBqiutexe-rhJqCMOt5jUgaR9fGDW5-f7rrb7-RE2Eeu-QyARdxGkUjOj0-HjTi8Mn86HYbOh39gzyTqV_x4kQpB_M?fife=s16383",
+        "title": "Altadena Forever Mural",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/b25a164f58a200dc67671cf89832c976f04e7bdc.png\" height=\"200\" width=\"auto\" /><br><br>https://unincorporated.coffee/pages/unincorporated-mural-project"
+          "value": "<img src=\"./public/media/cfa2c43e130eaa61aea6130926230b6b2919d8a1.png\" height=\"200\" width=\"auto\" /><br><br>By Austin Scott  https://unincorporated.coffee/pages/unincorporated-mural-project"
         }
       }
     },
@@ -36,38 +36,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -118.1312013,
-          34.185281,
+          -118.1342685,
+          34.1860576,
           0
         ]
       },
       "properties": {
-        "name": "Greetings from Altadena Mural",
-        "styleUrl": "#icon-1509-0288D1-nodesc",
-        "label-scale": 0,
-        "icon-opacity": 1,
-        "icon-color": "#0288d1",
-        "icon-scale": 1,
-        "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png",
-        "title": "Greetings from Altadena Mural",
-        "notes": ""
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -118.1309472,
-          34.1900884,
-          0
-        ]
-      },
-      "properties": {
-        "name": "This might take a while Mural",
+        "name": "Altadena Strong House Mural",
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/c470a643c55be5ecc4582747f4d4b9bd268b6d8b.png\" height=\"200\" width=\"auto\" /><br><br>White wall with black text<br><br><img src=\"./public/media/012ed851d55eb7bddfd96f73276e4666aea203dd.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/a69dd61fb457b4a13f254a8bdeb845d41153bfe8.png\" height=\"200\" width=\"auto\" />"
+          "value": "<img src=\"./public/media/a91cfd9888dde095fae7429bb9d23ad201fdf0f1.png\" height=\"200\" width=\"auto\" /><br><br>"
         },
         "styleUrl": "#icon-1509-0288D1",
         "label-scale": 0,
@@ -75,11 +53,11 @@
         "icon-color": "#0288d1",
         "icon-scale": 1,
         "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png",
-        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X67lS-46Bl3XkCmgnyA1Jq3mJYf86XWanGh6IUAgbthETuEIXFqRxMRjVlvQJc2-U6OUDgpv4xSFHWFYaanOuARxUTBTTjRF9mMetA4xxSEq-sQWIxsoNcn2jL6eL9Ph0edSXU9O4iBOvSGPY4pkXxzKOhCriTIFQNuEN2mtXHgP5NtUZOxnD6mrSh99S5rnljQ0qyRXhjJ9UJE3d3xESzJkTpW6RU7EgETKJuEd2gVznW-S6E-wkXsTz4?fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X46Y8obVdgh_Dz08Rm9dOmbf364biFl6zikw1Lh4nuduJycZv900lC9tIgIWXbrhKyhzXH_5k3La7cRLF80yXve5oRrvA_k7dQV6jZa7UlNbiJYSjmdytle8ZwM_JGhx0jEppczfnOWGFIRL9tVNz-gY7V3hudIdJcnufChAokYiK6Fgcjj9uOYWiW8BWnTROg4fa5QzrKBWwRAWe9r719zlG-8gKRFdSrnhrhbSFPSpWnINeI6cpL4Idg?fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X76VcOutZQzuSHBDB8fGMUFoY2s-3Cb6CsgO9hBGlBivk4_BlZGvoK_PlhQUl35MEb6Qk4evdULbjvpnnS3KR0L_yBB0kRr51K6VWvg_oRyBP0X3d1dpFASod_mI-feSRYBWhqZNNfahqp_7q9f5-04W7W8ot2XvzVS7-32-MWZEf_R52wmWv8wpssTbvS3KButUA1e8GgpyogZPMEbDr1Kje_kjCXyG7QUNBZhJOGrUBBou8DdGrI6JS0?fife=s16383",
-        "title": "This might take a while Mural",
+        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X7dsYHpxscKVq_dpwNk1ul-9OgQGoT7unpqZCh6LoesCvPWTG2u6elc0GbX57Sw5hZuXJgTkiarCtkeZfdRHVHIcZherUHQxyuc2riIfdCwduDeAxs_zAOXHq3mbcZgf10vrQ7Q8Q63lBMAo18pfXIvH5a6LkD9f1RUMhqYy2oEZCQeJKL_P__myNBvGjyBZhmPheQ72_Uyl8TbYyYo3x_B4JuX_IVoPx06PPNlJUN1Osidn5vpI6ACUl0?fife=s16383",
+        "title": "Altadena Strong House Mural",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/c470a643c55be5ecc4582747f4d4b9bd268b6d8b.png\" height=\"200\" width=\"auto\" /><br><br>White wall with black text<br><br><img src=\"./public/media/012ed851d55eb7bddfd96f73276e4666aea203dd.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/a69dd61fb457b4a13f254a8bdeb845d41153bfe8.png\" height=\"200\" width=\"auto\" />"
+          "value": "<img src=\"./public/media/a91cfd9888dde095fae7429bb9d23ad201fdf0f1.png\" height=\"200\" width=\"auto\" /><br><br>"
         }
       }
     },
@@ -97,7 +75,7 @@
         "name": "Bear Mural",
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/686ed08ce8c3b25eb10868128b65a533d6cd645d.png\" height=\"200\" width=\"auto\" /><br><br>Will often have a different seasonal hat"
+          "value": "<img src=\"./public/media/15def3b34586d4ff4ce19723578491dc28587751.png\" height=\"200\" width=\"auto\" /><br><br>Will often have a different seasonal hat"
         },
         "styleUrl": "#icon-1509-0288D1",
         "label-scale": 0,
@@ -105,11 +83,11 @@
         "icon-color": "#0288d1",
         "icon-scale": 1,
         "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png",
-        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X5j8HJEoVy-tocysDThCeh0Ay_IK3c33_zFAoFimqdZYn1Rl90sBMT5DpG2qqsI62AKZTtd6gQuBe3U1CudLaZBRBYsUaaPCTQca-kz-_Ubz2aZXmRma_R5tPuSQrj_8uIsiHEPMtvIGzt1onRKPeVTjPLIOh0ofByrlomRX9S-Eg6rsTD4K0sIioXpBKNSKDL5YCYxDG5sbi3jCqi5k7Avp1eAId_9GIoSKgUkgxUg-ufnarJGOLndNw4?fife=s16383",
+        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X7Bj-TD5OpoAIFHGlmL41kgwoJsBohTyOBoWVjTxggIkkT_7xf42W0UsW2FcveqviVJfc84JHSzI1WVuWtpYH3VtIUSF27c2tQIOwOfJp_8_g5dUvpp-W0JKU99CEuDaY6tLVHSZ3cESA-gQmZTSN-wzAPh-Pr7fXlY-0KEpa-bPzR1KL3-DaNB3RITGB0Uvj4hfzCTgasnOu8WSBJi6e28DaXwO9FhbP2RBCsTwCJy9qW3yzzN7JTeLWY?fife=s16383",
         "title": "Bear Mural",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/686ed08ce8c3b25eb10868128b65a533d6cd645d.png\" height=\"200\" width=\"auto\" /><br><br>Will often have a different seasonal hat"
+          "value": "<img src=\"./public/media/15def3b34586d4ff4ce19723578491dc28587751.png\" height=\"200\" width=\"auto\" /><br><br>Will often have a different seasonal hat"
         }
       }
     },
@@ -118,28 +96,51 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -118.1623193,
-          34.1827995,
+          -118.1312013,
+          34.185281,
           0
         ]
       },
       "properties": {
-        "name": "Doors of Reflection (now indoors)",
-        "description": {
-          "@type": "html",
-          "value": "<img src=\"./public/media/5c4fc4bff1f0318431bb989f6c0ad9f86447704a.png\" height=\"200\" width=\"auto\" /><br><br>Interactive art. Were originally placed in 4 separate locations for the 1 year anniversary - Fair Oaks Burger, Main Library, Grocery Outlet and Odyssey Charter School. Now being displayed at the Collaboratory<br><br><img src=\"./public/media/eb8867f9b1d12ef955daa9befe12995dc11b20c9.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/e1eb329cf8ab916a87155aa207740be7ccae9939.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/424937a76a026064c01c8d628c26cb8b61ac3510.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/7e0cffa1e9840914f3b3887275964b5a76f68d08.png\" height=\"200\" width=\"auto\" />"
-        },
-        "styleUrl": "#icon-1599-A52714",
+        "name": "Greetings from Altadena Mural",
+        "description": "https://www.greetingstour.com/murals/altadena-mural",
+        "styleUrl": "#icon-1509-0288D1",
         "label-scale": 0,
         "icon-opacity": 1,
-        "icon-color": "#a52714",
+        "icon-color": "#0288d1",
         "icon-scale": 1,
         "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png",
-        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X6z1coInPSJrDFcCzR__b1EhUHsPO_7NlOGTwT_LR1-M90ztJHQ6q-i9QnOQXfVwUbTKPEuQJZSei8bqrLtpl_OjLnreznv5ya_NO3u9ASz98igpsNUZHaqvd94DViMq0v1i46pI9hzaTERFsFBeInLRj4odTARjsqYUEGrEIDv3DFePqr_bghBiSUxUJX82iA55YMCpuLC8fyMY4q6_TkPNJ4X3KeQwif-kffn4Mzwt0eW3pM-ZHEzkjo?fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X5N95uc24yFYjmEwYs6AwPbaVBJmutIUvUwsW5biRspVfeRPI58sh_UzWWeNGtnUARKc4qTLc6cFT727J6_qRrf6b6hNfTeilceMlf8-Kpu38gwxTlTy6Q-jXVntc81sC9YXF0Ukk3OU7cLH8XcFms9MqbzZGBTFjKXwbN0sEMv729wyMRRj0e2jdlZTseuDmYaz7DWyzhED5cghsqWUxkojEddX7-SBsSPHf-ZulD5R7MSRlMlh-HBt2w?fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X5ruQxoYUavdlzJmPZ1m97X-4nClfiHE2MZ5AWGXwZJReEzBBF0y20bE0a62LcUZXsrt_5wawLNM4GI4oJJ_t3AumBroBoHjNAsy4C5NT92H1sO2h5-FnglYWOeiDshyGDwNbgerwkmya3amZ0zSd34TgVxJKDdeE9Zfg_tMmaF_dpo27PNraFSGDwSMeqg0B9NZThfyDJ2PYUZ2WrnKOV8Cx3lD7pprPoVjfGOQglbQboT9lWovw8JkdE?fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X53SAOJnyP7RQcwQCrjJ8GJce2v9r7eSPEZcCJpXcJzgUNbnicqpvAf-UjI5dbUR9d4GRZCUZ36CsFsPafbKs9Nh77lU14cEJuXo-l1YC5Eb6JPdG2OQRCQLq2ZBjXB3y0uwrdQZkc5iCCpd8Wan9BXr-KRT2ysmLpmJszZK7pKVoZqlIRfXDisih7R6joVr8jqDPi-0kbCSxAp1WKABGL8i-q4ps5ouvpmmvsP8cmIVLuuCB96HumpbiM?fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X44ekA3FxHhgn_9OB7pPsm5_v7fQl2QJt2F6R9rz9DrkIgmmkt1KRam2MPTiYU59jayYhhOzXH3oNaeQOp1d_xDg5BrlwfzSxnKVYHs52k4K-3RPILcjqW7Qcmqyi_nxGUBGl7u_TWVAVPjR1YH-ppjupEblzaXgH--BzLqb00K2hdmlbul1fh-LxJ3tEraLAWOvOgmefzgtVkZpwna09OjYBmloU3EBM6pWL98igBjh5N4sriGV7pAzVo?fife=s16383",
-        "title": "Doors of Reflection (now indoors)",
+        "title": "Greetings from Altadena Mural",
+        "notes": "https://www.greetingstour.com/murals/altadena-mural"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.1309472,
+          34.1900884,
+          0
+        ]
+      },
+      "properties": {
+        "name": "This might take a while Mural",
+        "description": {
+          "@type": "html",
+          "value": "<img src=\"./public/media/bdf96af4808405933a20452d2171fccbbae9ef40.png\" height=\"200\" width=\"auto\" /><br><br>White wall with black text<br><br><img src=\"./public/media/36ff76591d3852dc2bda542e43cffaed17e04c37.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/fdbc345e2711d54c10b1360f84b1bdcf44d91c4b.png\" height=\"200\" width=\"auto\" />"
+        },
+        "styleUrl": "#icon-1509-0288D1",
+        "label-scale": 0,
+        "icon-opacity": 1,
+        "icon-color": "#0288d1",
+        "icon-scale": 1,
+        "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png",
+        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X4O-X2xjfuGKWQD7aLdqNJCMJXP-rNCOsjuhWIZCwlGvqP26CadUtgbR-_Lmwhy84AQoEJhDf7kAR25p-d5vLqQCvh8HZFEsXOX3QL7rMasoQFQ022MNTS-axYk-8W4-pva5ciVGWBTrw_wpEPboGnrYpTWHhL6i9c2iQp5yjKXpuxrLie81AMRfioq_ltIEZZA7jgHKrJG4AlSdC8qs5hvCGpUPX4ZYrRsWTffKjCS-8jmoNj1DKlbRo4?fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X4ycbG8AYRe4ebzVJWIvucQTnId5lWafO2_jahnzm-ms3lASK83A4ZXq2bdFb6HMUY7WZeEVV9B6CBJAWJRKJabrHH-9XDArLoC1DGUlk5ey2X9inoLRUauQ_s3biHnMY9VkSKU7AEA2fKqE8jbhDCKXeeFzQIOtHsn--ZEzGhbUy64ZtWq5-c9tRs6zNC249pfLuMdrNkMhE_QKU6kz5uwly1naKxX6NPdNuvgsCkv8BisLtalVTqA9XM?fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X7P32HAgU83g0qPmdA0eJqhvWMSAuBiLSlzQUefNeRHDIRd5qpGcV_4s5k_qQcD7S-Fdaw5pks7QbbTh8XdOQvfGJ_BGMzosv6ZPx8JU7shenSbmvEOsPwMuJpaqi3yJcsuz41ndXuutrIlnP4e6kEMr8AhcjprUKkV_BJpCAgV8GDM3R3RCjtLFM6PEAmYBT7_Eheyg2ggXxkVBZsmHcvNCMnQT9fv5M_IO9y6PueoeHyXmbOixBIbaqs?fife=s16383",
+        "title": "This might take a while Mural",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/5c4fc4bff1f0318431bb989f6c0ad9f86447704a.png\" height=\"200\" width=\"auto\" /><br><br>Interactive art. Were originally placed in 4 separate locations for the 1 year anniversary - Fair Oaks Burger, Main Library, Grocery Outlet and Odyssey Charter School. Now being displayed at the Collaboratory<br><br><img src=\"./public/media/eb8867f9b1d12ef955daa9befe12995dc11b20c9.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/e1eb329cf8ab916a87155aa207740be7ccae9939.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/424937a76a026064c01c8d628c26cb8b61ac3510.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/7e0cffa1e9840914f3b3887275964b5a76f68d08.png\" height=\"200\" width=\"auto\" />"
+          "value": "<img src=\"./public/media/bdf96af4808405933a20452d2171fccbbae9ef40.png\" height=\"200\" width=\"auto\" /><br><br>White wall with black text<br><br><img src=\"./public/media/36ff76591d3852dc2bda542e43cffaed17e04c37.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/fdbc345e2711d54c10b1360f84b1bdcf44d91c4b.png\" height=\"200\" width=\"auto\" />"
         }
       }
     },
@@ -157,7 +158,7 @@
         "name": "Chrome Bunny",
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/06aabfa5d297046e864f49ad4cb6fd8b7eefd197.png\" height=\"200\" width=\"auto\" /><br><br>"
+          "value": "<img src=\"./public/media/89ff3d2f5578e5b610c910eba49e5a4b9bf26af4.png\" height=\"200\" width=\"auto\" /><br><br>Outside the Bunny Museum - https://www.thebunnymuseum.com/<br><br><img src=\"./public/media/c066c84351e4a7e59810e56995456e0131660f9b.png\" height=\"200\" width=\"auto\" />"
         },
         "styleUrl": "#icon-1599-A52714",
         "label-scale": 0,
@@ -165,11 +166,41 @@
         "icon-color": "#a52714",
         "icon-scale": 1,
         "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png",
-        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X4dORqcNyoAYH5k8RK5Ib-ngyjCVnSbHQzZArCGwRT-VZ3TWXaeah1AJnUKUUcKtq_zcgfYzWiaMyz1bVRLN2crhzshCNNgZplu2QcpICibj1jV53hTd4t_c8ynUCT565pSDTUVyLjHWsUOmtASJgfh1UYGHfSBRbNp7PBIREjy2Qw5yMskA6OaHcjDf8dyFlyxOFuP0l8OYfqRF109GS_ZGShkrsmbCNhsHaDkyBDTtL7XLwokxSfx04k?fife=s16383",
+        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X734oL2yIAY2ACl_sUg5y-Uw4EXwtvZ7yEhrPYgsbm-festGKiTL-SCb7AqB8zH2kbApQxRbQCmVqdCWnwPViM0fbLgHDGEug-sBsztMRs8YN9m7_IvxuGdPR_zOjvHUZCbuaJUXdeFoGRvfAaocKv6hYzx-nPlaSKDN_sIMEUVvoI3OX-ZW2vyxH-WrVvQ7PMYL3BYidKpcWPUE77oUr6Exc4oHUAAEBmoCEOtAPtNes3WkzKIfv9kD-w?fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X5RgfNno9WR22B5q6cX-Qk2f8I93dSfEjPtn7E29AMzE-L24QQoaQCWw12d1_ZdTlKALBF80onvXNBnvQcYwlh9Sk1Vcmp3nSKA2GKFLm4hK1bFoRdVXsOJaArhWccH52Qgd4n9N9UPqiOa9NsRF6amcECMQ2-CSIh7T_l_-h7fFE-cgqND_aoRCTl5nvxy0EnUe2shg-8UwGi0rHClrKXy4kGb818obYTZ8HxJlv7GI1iT_8X4AS4v6Bg?fife=s16383",
         "title": "Chrome Bunny",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/06aabfa5d297046e864f49ad4cb6fd8b7eefd197.png\" height=\"200\" width=\"auto\" /><br><br>"
+          "value": "<img src=\"./public/media/89ff3d2f5578e5b610c910eba49e5a4b9bf26af4.png\" height=\"200\" width=\"auto\" /><br><br>Outside the Bunny Museum - https://www.thebunnymuseum.com/<br><br><img src=\"./public/media/c066c84351e4a7e59810e56995456e0131660f9b.png\" height=\"200\" width=\"auto\" />"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.1623193,
+          34.1827995,
+          0
+        ]
+      },
+      "properties": {
+        "name": "Doors of Reflection (now indoors)",
+        "description": {
+          "@type": "html",
+          "value": "<img src=\"./public/media/b83dc12436da06c16b043e7e7d2ce32dea25a629.png\" height=\"200\" width=\"auto\" /><br><br>Interactive art. Were originally placed in 4 separate locations for the 1 year anniversary - Fair Oaks Burger, Main Library, Grocery Outlet and Odyssey Charter School. Now being displayed at the Collaboratory<br><br><img src=\"./public/media/7fad5e698c7e58c5d04e60553be73e60153f8ce0.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/d46095b9d31a679c41c8f96d87efa4001f22cd4e.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/0ed2684bc1979bc3f4effe3d08c841485a1073d0.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/1a0db2cd01d44a1889077f90a48f2fdbc6f45ea1.png\" height=\"200\" width=\"auto\" />"
+        },
+        "styleUrl": "#icon-1599-A52714",
+        "label-scale": 0,
+        "icon-opacity": 1,
+        "icon-color": "#a52714",
+        "icon-scale": 1,
+        "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png",
+        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X5JxjWmQdliKXR9s9Qm4S88T25uXwud8b5YPk3Bk5PGjENh9RB-KR7s8--w3nHZGcB9prFL361w1MwMyplU9NDZ_ghdTATN7jW6LUpvyP-7EwFVgY-hcdc7afp4kYPwTpOw3W1bDWexfdeAYnAn9oEiWbbwafsxBmoekTCVEzMZBlYoTbW86iEUx8Ax29jJD_sWO9dX9Gxma4tULE0zxqYR0dpVH473c_PXJ3erThChHIZXPpO1Z4s8kME?fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X7AVZkaGYjCp2x3_hPEvJ8Nwew8J0QYmNTcRZYmy3jqczFDWdhNw99YxZxMVBfN5gI-yQN-VOuSEfH8YUkNr_KrkK8GwzD3xTyz2O7AI92U9dwY5-2nyBKbRtbUMgIBXUiPrey0Ih-tsWUw-naRKL3iBoIF8SZ2v0ji98gQR6kUgypcVW-36HIRHcaishFJdZ25yUSriFIt8lxTGVZP5Ly5HXb8c0JayH8CG_epVD-BNvJxdT8RuduFtPw?fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X47YIIVzvHPuapNFdCSimT9gwYpV0Kzh2Zc_92Jh2l9vuzbAnBGnMeIdIIk1K9yJSIRCoojDxoZ6ROqBir4WU8h03TSfH_yZZBBzyezrMzV-XLsgCg75lj_sPFixLZwWo3wtL9AgQjY6fKgXyOBQir7p4QGcazfa3Nowkmpuf_uiI6dz24c0FRd0pOWwR6skKa1--xFlFQs2O_grQPcGKYMYXIQE-BHsCeeSdldvv0RtW8dFk2EZKpczPk?fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X62shPgd5vc7llmbT9o72qRd5u5UA-O-0U41ve-UOSTG7Pf9vSSjLBQUlcfWUWThCyrCp3HnkOoJp1r1lVItbLFKlAvL0_EGq8dWfOkQFMswnUBhk5poi0T7voqrj4yAZve2X-datss2PsFFfzdFsSnJe4P_eyUYEwQJBM5SZrLMIgGjImkS1-NeJ59bxvSMb7n2MRJDJFIsgbvpipCZjD1Pf2Pv-TOtJ_Rb-KbgqEZyhMPr8Mzc6tYaQo?fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X6DCzDfEB1Omm5YfKfysu2HQRjtJSULwdTIt3HG1N6dDdX4ImdGMsEo7klPQ7xoJe2D1ojLtGnHQV4nZz5qXEyi9i0Wniq9MUn9eAmZa9f3-9h17gUB15imOTWfaO6aRjb7yeLlsXiiQVpx3ytvm-KvMAdoRagjJ0YbSW6ylBzjZVmnEJZ_byhzozWX8UNMU-2Y1SsWdHlR7SKfE90Q_kK-eatwyanMOjnuOxsY95ZVJPOPjosrOBmDInw?fife=s16383",
+        "title": "Doors of Reflection (now indoors)",
+        "notes": {
+          "@type": "html",
+          "value": "<img src=\"./public/media/b83dc12436da06c16b043e7e7d2ce32dea25a629.png\" height=\"200\" width=\"auto\" /><br><br>Interactive art. Were originally placed in 4 separate locations for the 1 year anniversary - Fair Oaks Burger, Main Library, Grocery Outlet and Odyssey Charter School. Now being displayed at the Collaboratory<br><br><img src=\"./public/media/7fad5e698c7e58c5d04e60553be73e60153f8ce0.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/d46095b9d31a679c41c8f96d87efa4001f22cd4e.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/0ed2684bc1979bc3f4effe3d08c841485a1073d0.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/1a0db2cd01d44a1889077f90a48f2fdbc6f45ea1.png\" height=\"200\" width=\"auto\" />"
         }
       }
     },
@@ -187,7 +218,7 @@
         "name": "Norman Jr",
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/a4701fb98e85c559017d4bcff9d7cd5edef59ecd.png\" height=\"200\" width=\"auto\" /><br><br>"
+          "value": "<img src=\"./public/media/0e01328f38cb78b622e9c555f7db712253a6d024.png\" height=\"200\" width=\"auto\" /><br><br>"
         },
         "styleUrl": "#icon-1599-A52714",
         "label-scale": 0,
@@ -195,12 +226,72 @@
         "icon-color": "#a52714",
         "icon-scale": 1,
         "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png",
-        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X7gpuyc925TqrwwfI7-6a8XUMKxv8cexuhscQKd5v3ZFVd9xu2ygtIxuRw8JpKuO-gICUnfPLsWoxofC_Y4fwXuaM_2jc6gF3-qxjlnihVgP_2H_mY6UT-STCrLhW1ryUlwuQRirrgROYw_VNVwQ2DivAERlaIcPE5YQuuW8wi-FNn7-Cmgk4s0MNOTxkWMWHJuDmpTj4I0mpKWJ_KQrC0H_eyk7gd2rOnxcSrbB_gcBFnJcJBbpEU9U_Q?fife=s16383",
+        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X4cGf4rIY1VebxO3-iH1pHrHnXXTuBBVcfo6SMbvFgdZQ9ajwWaWiqnFnQBObGlCQkhj-rM3yHx5wWOBIPClA69RUCC38UOyEGQZ6SxM7RUWrLr-lD574AVBHsNJ5qQKSXSyKUrBTU5NmNOYylb3a8gW25bwf95TJJUYR-QwJkXCZPMvCcwmmf-Rd2ANkTfnssDdhJm82t_TYr6TAButIIWkPpOUixW2LX3KLwPNKN5vjmTM-rpyDyzJfY?fife=s16383",
         "title": "Norman Jr",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/a4701fb98e85c559017d4bcff9d7cd5edef59ecd.png\" height=\"200\" width=\"auto\" /><br><br>"
+          "value": "<img src=\"./public/media/0e01328f38cb78b622e9c555f7db712253a6d024.png\" height=\"200\" width=\"auto\" /><br><br>"
         }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.1637744,
+          34.1953731,
+          0
+        ]
+      },
+      "properties": {
+        "name": "Torii Gates in the suburbs",
+        "description": {
+          "@type": "html",
+          "value": "<img src=\"./public/media/0bb7c0d98d02bb855e5aaad8b7681d26bbc060e2.png\" height=\"200\" width=\"auto\" /><br><br>"
+        },
+        "styleUrl": "#icon-1599-A52714",
+        "label-scale": 0,
+        "icon-opacity": 1,
+        "icon-color": "#a52714",
+        "icon-scale": 1,
+        "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png",
+        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X4T8mc-WMOTDbVcux2-LN9oeVycD7_UuGQfnXhlqCoyQjZ1SLU4gcKxDdulYn-pBUnbM8qsMG0u_L0a5qg4yjxipQyyuI7eEDLmZ7ufj8Lo3f6S77ayOitfti3sMgVFbl-FKcK0tT0nlQFLA-vUk4XlZi8QCNI5m_r_W2eT2aFb--b9lfPITm_PVepvXWkuL3bjKVmzZeMoVAyM69qzT_YrSLt5yIUVt1cCaXTWdjGtShnpnqGPLbKYfEM?fife=s16383",
+        "title": "Torii Gates in the suburbs",
+        "notes": {
+          "@type": "html",
+          "value": "<img src=\"./public/media/0bb7c0d98d02bb855e5aaad8b7681d26bbc060e2.png\" height=\"200\" width=\"auto\" /><br><br>"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.1523594,
+          34.2004568,
+          0
+        ]
+      },
+      "properties": {
+        "name": "Point 5",
+        "styleUrl": "#icon-1899-0288D1-nodesc",
+        "label-scale": 0,
+        "icon-opacity": 1,
+        "icon-color": "#0288d1",
+        "icon-scale": 1,
+        "icon-offset": [
+          32,
+          64
+        ],
+        "icon-offset-units": [
+          "pixels",
+          "insetPixels"
+        ],
+        "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png",
+        "title": "Point 5",
+        "notes": ""
       }
     },
     {
@@ -217,7 +308,7 @@
         "name": "Bear and spiders stencil on wood",
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/907cd4b37d2a03e78bffde66f69a35aac3e1e650.png\" height=\"200\" width=\"auto\" /><br><br>"
+          "value": "<img src=\"./public/media/5430ad3bb48ea2eef36c03ff4a8674cabc1b0cd3.png\" height=\"200\" width=\"auto\" /><br><br>"
         },
         "styleUrl": "#icon-1827-F9A825",
         "label-scale": 0,
@@ -225,11 +316,11 @@
         "icon-color": "#f9a825",
         "icon-scale": 1,
         "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png",
-        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X7qd4ZNKQQwBLZfzwQzrLGIPnQYDEm2Ge52JgmfOIJetDWyX31plFwTtpcRkv3afxc5pNdTdcT69h6fEigoSq1KYv_l3TwD828yFbO1REgzUktVTBZJXHsHNu4Q6rELjI0KrD9cslcayr-2ovTigb_RLZfEXImX75jkgH-LixSnTY9knlEJ_L-KAnyVLw9gv2Xbv4Ur8jPf7CwnlC4VVLt3fuo-qSUWorlnY_CcESjsH5HLN17agvIrnLk?fife=s16383",
+        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X7aQFN9vjJXjEA2lAc5SYqkWlSL9nw-CFoWB3YTFAsVJ7PkvbHVneTNi1nXnorsRMlX1GMzW0XQuxwGyDwIiRjki3DwJrSSLxXqVVwNixJU2m8r1F6R8-isVoRf3j3G0TBJjPqUR7LSkRTAyIaaFQw_mwu0ovzPEm59QmEKZ0XtqImqNRKcb8w4Ni4pufh-UD_jVKpcZunTJvk6IpoPecMUnvpbuVJS_aLOe76wGPZxNZ7exuXFNOCUGQU?fife=s16383",
         "title": "Bear and spiders stencil on wood",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/907cd4b37d2a03e78bffde66f69a35aac3e1e650.png\" height=\"200\" width=\"auto\" /><br><br>"
+          "value": "<img src=\"./public/media/5430ad3bb48ea2eef36c03ff4a8674cabc1b0cd3.png\" height=\"200\" width=\"auto\" /><br><br>"
         }
       }
     },
@@ -247,7 +338,7 @@
         "name": "Bear mixed media",
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/814d47cf4071c193e820caf04c4d6eff7720818b.png\" height=\"200\" width=\"auto\" /><br><br>Repurposed advertising sign"
+          "value": "<img src=\"./public/media/ed4a300f0ef2637bef53203e3b8ceeb02b099be4.png\" height=\"200\" width=\"auto\" /><br><br>Repurposed advertising sign"
         },
         "styleUrl": "#icon-1827-F9A825",
         "label-scale": 0,
@@ -255,11 +346,41 @@
         "icon-color": "#f9a825",
         "icon-scale": 1,
         "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png",
-        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X7edpAdBJFEApncVrFwArKByvXRysaoWEDL9PPBnE7VMQ4HMx4Jri0QRgUBovYXkrqM5KKtKkBchX_OpXY82kzguHligDOqZ9a3mrg5YYDqCO_fg_7Pn7-B9nTSa43ria6qIg9Pcf0szazqN8cUGkJ37awczGS059guqYSVTslwTM_NSX1gSdz_751ckaVs7XMsEtGVsncnubFsQAfHiWxG_9Bd6S7yJM-j7LjwY5T7yBkNev2cHpRVKcs?fife=s16383",
+        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X6Ko8kBpfYhyMyPSe4ipBBQFbqKsJO8QjKoMYKunnOevG0afiOHzBQR-UBqngxRT5eZSJ7wU9pqRkBKF6DcaahkKpN8bok9l_LMJWBRKxvePhHCNrt5KNeQ1fq2dNNj56sqAo2fj7Bhon_9l7xZJE7vbnwroMbTL3oJRwWpnE05aO14adyeTuii-60Wlthda4sL6HgSYXRyPsSno7zLh3RcZxnjNgokmCK1gg_eYU_UtbUIvhkOP15WvuI?fife=s16383",
         "title": "Bear mixed media",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/814d47cf4071c193e820caf04c4d6eff7720818b.png\" height=\"200\" width=\"auto\" /><br><br>Repurposed advertising sign"
+          "value": "<img src=\"./public/media/ed4a300f0ef2637bef53203e3b8ceeb02b099be4.png\" height=\"200\" width=\"auto\" /><br><br>Repurposed advertising sign"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.1379373,
+          34.192696,
+          0
+        ]
+      },
+      "properties": {
+        "name": "Rooster mailbox",
+        "description": {
+          "@type": "html",
+          "value": "<img src=\"./public/media/caeab38a38f510e1114f1afb97a3adb44c851cf3.png\" height=\"200\" width=\"auto\" /><br><br>"
+        },
+        "styleUrl": "#icon-1827-F9A825",
+        "label-scale": 0,
+        "icon-opacity": 1,
+        "icon-color": "#f9a825",
+        "icon-scale": 1,
+        "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png",
+        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X5sNfwP_hlr6k3qgfOTO714VpEiuDagL4dcGFek7EK9RrfE0hzPkwrvhXJNa3hv_PdTSNhbOYr5q2Af2dggSCBhdoiHAqdXS7OyJg74aWw7hznLIHPdLFSdM5Xo82GbcDvsPNXKRBN3ZpQhluD0ziwTyY3697Fbg-uBWaR7PzrHWB3xqw9Png12wcMOmOdrTI94wHinRSbZF6PVtYyDmGo_Xaf-Bx99T9_oqQlvS5FkHelUQl3EdPKewxo?fife=s16383",
+        "title": "Rooster mailbox",
+        "notes": {
+          "@type": "html",
+          "value": "<img src=\"./public/media/caeab38a38f510e1114f1afb97a3adb44c851cf3.png\" height=\"200\" width=\"auto\" /><br><br>"
         }
       }
     },
@@ -277,7 +398,7 @@
         "name": "Woman and spider stencil on wood ",
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/c351b133b535fad92138543b233c3e5e57c220a9.png\" height=\"200\" width=\"auto\" /><br><br>"
+          "value": "<img src=\"./public/media/d5cc8599a15d9204263a3970ec42a0de6d59a992.png\" height=\"200\" width=\"auto\" /><br><br>"
         },
         "styleUrl": "#icon-1827-F9A825",
         "label-scale": 0,
@@ -285,11 +406,11 @@
         "icon-color": "#f9a825",
         "icon-scale": 1,
         "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png",
-        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X6ggXfv8u3sfT4lzbhhaNdrRuw5ydBDaVJ4WHsEj5KN3nNupkAFeKfcgwCMqf_wsdlHGxroyDccr-vWKaHFe-snI66zQtObyZarNdAuUuu4aLmOvMtFKgUgvTmn4FjvebUjYqd1Dp_XW8g_2VFM812hQy2wI6pDpMwCoPU-JjSxNeusZREcVhLw_vbc6mpIlwcWw3o2MAkV2CmezlqaQVuxhjBv3HZp3BQaM69E1hPZZy-DTCBF_QPoQQE?fife=s16383",
+        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X4QcQhFZhtWOX5e8maktP5z649wsYmpV1k0Y28hVXGFFqyS-yLzfOGxWZWo4yEMEeFn1Wb_ylz4uHFGVljRRIic_PR2GgCOlb2ITGbdJRMU4o6euHe4ADq3WRiR5IZ-2Vt1wJ2M-0_g3BqSWv3-ViDS8f_KqBd6loYDwYQkG_DXKRHza6HkS1ycYGUXUTcyPBXpB570QPctli5ebH9UmOAnPHzUQBvwgLWMN2vV8MxXcWAEhu2LE5RBRj4?fife=s16383",
         "title": "Woman and spider stencil on wood ",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/c351b133b535fad92138543b233c3e5e57c220a9.png\" height=\"200\" width=\"auto\" /><br><br>"
+          "value": "<img src=\"./public/media/d5cc8599a15d9204263a3970ec42a0de6d59a992.png\" height=\"200\" width=\"auto\" /><br><br>"
         }
       }
     },
@@ -307,7 +428,7 @@
         "name": "No Trespassing Sign",
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/07d5af5749b52086e132d779cd0332e75e0ab437.png\" height=\"200\" width=\"auto\" /><br><br>"
+          "value": "<img src=\"./public/media/cedf50d1a023f5eea9a6ebd90d9a36204afd152d.png\" height=\"200\" width=\"auto\" /><br><br>"
         },
         "styleUrl": "#icon-1827-F9A825",
         "label-scale": 0,
@@ -315,11 +436,41 @@
         "icon-color": "#f9a825",
         "icon-scale": 1,
         "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png",
-        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X7waCz0oSBegUQIjbFvjJpOKsCQjTfTK8uYD_SYpAS5Lr-6rc0gLK9WET7WhY8AcMFDSqqvBe4OFIUoc0KYluS8umnqrarNJ2FA8mE3Xjo2MEEevuU3WbVsH41htkaWOwwQtJpG-a-ZEcMEnoU-d4nTulY7PZtKncU7J55b1_ZJv2Sl2PWeAvZJ8FlD8zHz3zatN875Oj0XX5BiH15N0zr5nSNXIU8LQx1gzFMt754QX_iUBCliV3d3X1c?fife=s16383",
+        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X71iNUR8-PAbj_qhApqOYIoQ2FMCoTJ0KhINSlHgiwmRdrOen1z9hIA_5rN-vvPL_u-qzbT7f5GhHX_fWSlQlXMl5zGMbZw0wBaEKwt1feCoF-lMc4j_da1wiEXpaf5TgZP2XT0AWh460AiqR1U2ZZ1lHM7ELj7CjX6Qr07yXH_CPyXtLMsSKy9pu_tuoC5dZvCdjulqBP3sKAHeuQv_EoweInh3F2wvxgpJ1c4LbMGJ0jgITqq51gl2mI?fife=s16383",
         "title": "No Trespassing Sign",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/07d5af5749b52086e132d779cd0332e75e0ab437.png\" height=\"200\" width=\"auto\" /><br><br>"
+          "value": "<img src=\"./public/media/cedf50d1a023f5eea9a6ebd90d9a36204afd152d.png\" height=\"200\" width=\"auto\" /><br><br>"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.1483975,
+          34.2001418,
+          0
+        ]
+      },
+      "properties": {
+        "name": "We love you Altadena Ribbons",
+        "description": {
+          "@type": "html",
+          "value": "<img src=\"./public/media/848838ef1ab1bb847bac9c21ce8b9cf16bfd5b22.png\" height=\"200\" width=\"auto\" /><br><br>"
+        },
+        "styleUrl": "#icon-1827-F9A825",
+        "label-scale": 0,
+        "icon-opacity": 1,
+        "icon-color": "#f9a825",
+        "icon-scale": 1,
+        "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png",
+        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X7DLiEgiOUq0GchxEKb5VbmFs3lA3kePEfNDvljkmtsqOSa_9ZtDqFeRcCHSWtKfJHnObuDz2_Eo1k2hhT0KI8fisDX-pOZiz09BreOUQOPRXg5_nCquaabxYIOkpQ2kz50dzigqrlfHbN800FmfXjxUxhRzCCzdoi-xrgYVb5jTDkcnuOGAguP1kK6Ho8hBAPO_CSI_O_8VrdVo0-qqJBZSbG8C4N_qN-flO9F7dorrGR81vrN9eypeWo?fife=s16383",
+        "title": "We love you Altadena Ribbons",
+        "notes": {
+          "@type": "html",
+          "value": "<img src=\"./public/media/848838ef1ab1bb847bac9c21ce8b9cf16bfd5b22.png\" height=\"200\" width=\"auto\" /><br><br>"
         }
       }
     },
@@ -337,7 +488,7 @@
         "name": "Mosaic Butterflies by Flaco",
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/95560e04103e067f6489400642564cd9a9530c4c.png\" height=\"200\" width=\"auto\" /><br><br>https://www.flacomosaics.com/"
+          "value": "<img src=\"./public/media/0800cf87915c56bf751b9f200208df0321961529.png\" height=\"200\" width=\"auto\" /><br><br>https://www.flacomosaics.com/"
         },
         "styleUrl": "#icon-1500-FF5252",
         "label-scale": 0,
@@ -345,11 +496,11 @@
         "icon-color": "#ff5252",
         "icon-scale": 1,
         "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png",
-        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X5f1S0xODGfo06ZgnC8Q5DR3ZWwEY4YfX9ExEqto-YDKrDEkG2axpmOL0DRjbPt5JNWwdlLU7x19blE7mNgiEWKVIqN8J26x8BNu9vtA1N7GSUXWplqwNa4U-sxLsU8r3CisvDITzqg0cb4srNP0lJ5XEmSQuEWQaQM0XJnLjwWZQBjIIQVb8BrzIYB2Un_4aRSeu7G8ib0SJcuwksBX2QKblfcDdPdDoqItqs2kcEX9OwV1OZwO_y6Up4?fife=s16383",
+        "gx_media_links": "https://mymaps.usercontent.google.com/hostedimage/m/*/3AL_Y2X6CANQFmD0Lp1LRmsm4Gm5OG5LZ2REVvFLaphP_t4kbBadlXW6UXmMYc5Jv3VHaqQ_hdFhtj--0qkemCmUh5b-FJPxw4g_GmfX4J96lNHSNtSXtqofr_BpmDLVeIYSY5JF7WW1gm15Xv0fRRNNX5JxDb5AedLD7Wvmzm8a0JpbvElnECddZ8uBkgj6-doqJad42eGYQYB_H6fka3KflT2Q1QSI-TSHwKnlhmj45YHS_6RmxtaT6C4maajY?fife=s16383",
         "title": "Mosaic Butterflies by Flaco",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/95560e04103e067f6489400642564cd9a9530c4c.png\" height=\"200\" width=\"auto\" /><br><br>https://www.flacomosaics.com/"
+          "value": "<img src=\"./public/media/0800cf87915c56bf751b9f200208df0321961529.png\" height=\"200\" width=\"auto\" /><br><br>https://www.flacomosaics.com/"
         }
       }
     },
