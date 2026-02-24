@@ -134,6 +134,7 @@
       }
 
       .map-title-control h1 {
+        display: inline-block;
         margin: 0;
         color: #402515;
         font-size: clamp(28px, 4.2vw, 46px);
@@ -265,13 +266,25 @@
       }
 
       @media (max-width: 800px) {
+        .leaflet-top.leaflet-left {
+          display: flex;
+          align-items: flex-start;
+          gap: 8px;
+          left: 10px;
+          right: 10px;
+        }
+
+        .leaflet-top.leaflet-left .leaflet-control {
+          margin: 10px 0 0 0;
+        }
+
         .leaflet-top.leaflet-left .map-title-control {
-          margin-left: 0;
-          margin-top: 10px;
+          margin: 0;
         }
 
         .map-title-control {
-          max-width: 56vw;
+          width: fit-content;
+          max-width: 44vw;
           padding: 8px 10px;
         }
 
@@ -283,11 +296,6 @@
         .map-title-control > p,
         .map-contribute {
           display: none;
-        }
-
-        .leaflet-top.leaflet-left .category-filter-control {
-          margin-left: calc(56vw + 8px);
-          margin-top: 10px;
         }
 
         .category-filter-control {
