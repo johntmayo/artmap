@@ -65,8 +65,8 @@ function trimFeatureProperties(gj) {
   return removedPropertyCount;
 }
 
-function hashUrl(url) {
-  return crypto.createHash("sha1").update(url).digest("hex");
+function hashBytes(bytes) {
+  return crypto.createHash("sha1").update(bytes).digest("hex");
 }
 
 function extensionFromContentType(contentType) {
@@ -123,12 +123,18 @@ async function downloadImageToLocal(url, cache, budget) {
     extensionFromUrl(url) ||
     ".jpg";
 
-  const fileName = `${hashUrl(url)}${ext}`;
+  // Name localized assets by content hash, not URL hash.
+  // Some upstream image URLs are ephemeral, which can otherwise create infinite duplicates.
+  const fileName = `${hashBytes(bytes)}${ext}`;
   const filePath = path.join(MEDIA_DIR, fileName);
   const publicPath = `./public/media/${fileName}`;
 
   await fs.mkdir(MEDIA_DIR, { recursive: true });
-  await fs.writeFile(filePath, bytes);
+  try {
+    await fs.access(filePath);
+  } catch {
+    await fs.writeFile(filePath, bytes);
+  }
 
   budget.downloadedCount += 1;
   budget.totalBytes += bytes.length;

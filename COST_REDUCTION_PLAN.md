@@ -2,6 +2,18 @@
 
 This document captures what was changed to reduce run costs and what to do next.
 
+## Incident note: media duplication root cause
+
+Observed in `public/media`:
+- ~4526 PNGs totaling ~16.87 GB
+- only ~56 media references currently used in `public/data/art.geojson`
+
+Root cause:
+- Earlier sync logic named files by **URL hash**.
+- Upstream image URLs can rotate/change (even for same image bytes).
+- Each sync therefore saved duplicate copies under new filenames.
+- Without pruning in earlier runs, stale copies accumulated rapidly.
+
 ## Changes applied now
 
 ### 1) Sync cadence reduced to 4x/day
@@ -51,6 +63,7 @@ Expected effect:
 
 - File: `scripts/sync-kml-to-geojson.mjs`
 - Changes:
+  - Localized image filenames now use **content hash** (image bytes), not URL hash.
   - Strips non-essential feature properties before writing output.
   - Keeps only: `name`, `title`, `notes`, `description`, `icon-color`, `styleUrl`.
   - Scans feature HTML for `./public/media/...` references.
@@ -62,6 +75,7 @@ Default behavior flags:
 - `SYNC_PRUNE_MEDIA=true` (set `false` to disable)
 
 Expected effect:
+- Stops duplicate media growth caused by rotating source URLs.
 - Smaller `public/data/art.geojson`.
 - Lower repository and deployment artifact growth over time.
 - Reduced hosting bandwidth for static assets.
