@@ -80,6 +80,22 @@ Expected effect:
 - Lower repository and deployment artifact growth over time.
 - Reduced hosting bandwidth for static assets.
 
+## Current behavior (what to expect)
+
+- **Only some images in `public/media`:** The sync script localizes images up to the per-run limits (count, bytes, timeout). Images that hit limits or fail to download keep their **remote URLs** in the GeoJSON. So you may see e.g. 10–20 files in `public/media` while the map references more images—the rest load from the original URLs.
+- **Users always see images when they click:** Popups use `<img src="...">`. If the image was localized, `src` points to `./public/media/...`; otherwise it points to the remote URL. Either way, the image displays. No extra cost or storage for the remote ones.
+- **No more duplicate explosion:** Content-hash naming plus pruning means the same image is never stored multiple times, and unreferenced files are removed each sync. Storage and cost stay bounded.
+
+## KML sync setup
+
+- **KML_URL** is a **GitHub Actions** secret (repo → Settings → Secrets and variables → Actions), not a Vercel env var.
+- Format: `https://www.google.com/maps/d/kml?mid=YOUR_MAP_ID&forcekml=1`. Get `YOUR_MAP_ID` from your My Maps viewer URL (`mid=...`).
+- After changing the secret, run the workflow once manually: Actions → "Sync My Maps KML to GeoJSON" → Run workflow. Then `git pull` from the repo root to get the updated `public/data/art.geojson` and `public/media`.
+
+## One-off media prune script
+
+- `scripts/prune-media-from-geojson.mjs` removes files in `public/media` that are not referenced in `public/data/art.geojson`. Run with: `node scripts/prune-media-from-geojson.mjs`. The main sync already runs this logic each time; use the script only if you need to prune without a full sync.
+
 ## Still recommended next
 
 1. Rotate and restrict any existing Stadia API key in Stadia dashboard.
