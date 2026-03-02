@@ -341,8 +341,8 @@
         other: { label: "Other", color: "#666666", icon: "?", visible: false }
       };
 
-      // Basemap (Stamen Watercolor via Stadia Maps)
-      const STADIA_KEY = "2e4ff880-1782-4c64-a908-c2a37db897fe";
+      // Basemap options. Keep third-party paid tiles opt-in by default.
+      const STADIA_KEY = "";
       const watercolorUrl =
         "https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg" +
         (STADIA_KEY ? "?api_key=" + encodeURIComponent(STADIA_KEY) : "");
@@ -350,24 +350,28 @@
       const map = L.map("map", { zoomControl: false, attributionControl: false }).setView([34.19, -118.13], 13);
 
       const osmFallback = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 20
+        maxZoom: 19
       }).addTo(map);
 
-      const watercolorLayer = L.tileLayer(watercolorUrl, {
-        // Watercolor has finite native coverage; scale native tiles at higher zooms.
-        maxNativeZoom: 16,
-        maxZoom: 20,
-        opacity: 0.92,
-        crossOrigin: true,
-        // Keep fallback base visible when watercolor tiles fail.
-        errorTileUrl:
-          "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=",
-        attribution: ""
-      }).addTo(map);
+      const watercolorLayer = STADIA_KEY
+        ? L.tileLayer(watercolorUrl, {
+            // Watercolor has finite native coverage; scale native tiles at higher zooms.
+            maxNativeZoom: 16,
+            maxZoom: 19,
+            opacity: 0.92,
+            crossOrigin: true,
+            // Keep fallback base visible when watercolor tiles fail.
+            errorTileUrl:
+              "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=",
+            attribution: ""
+          })
+        : null;
 
-      watercolorLayer.on("tileerror", () => {
-        // Avoid noisy console floods in production; fallback layer is underneath.
-      });
+      if (watercolorLayer) {
+        watercolorLayer.on("tileerror", () => {
+          // Avoid noisy console floods in production; fallback layer is underneath.
+        });
+      }
 
       const labelsLayer = L.tileLayer(
         "https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png",
@@ -377,17 +381,18 @@
           attribution: "",
           pane: "overlayPane"
         }
-      ).addTo(map);
+      );
 
-      L.control
-        .layers(
-          null,
-          {
-            "Street labels": labelsLayer
-          },
-          { collapsed: true, position: "bottomright" }
-        )
-        .addTo(map);
+      const baseLayers = {
+        OpenStreetMap: osmFallback
+      };
+      if (watercolorLayer) baseLayers["Watercolor (Stadia)"] = watercolorLayer;
+
+      const overlayLayers = {
+        "Street labels": labelsLayer
+      };
+
+      L.control.layers(baseLayers, overlayLayers, { collapsed: true, position: "bottomright" }).addTo(map);
 
       createTitleControl().addTo(map);
       createLegalControl().addTo(map);
@@ -474,7 +479,7 @@
             <div class="legal-details">
               Map created by
               <a href="https://sites.google.com/view/joysquadcentral/home" target="_blank" rel="noopener noreferrer">Altadena Joy Squad</a>.<br />
-              © OpenStreetMap contributors • Stamen watercolor via Stadia Maps • Labels by CARTO
+              © OpenStreetMap contributors • Optional watercolor tiles via Stadia Maps • Labels by CARTO
             </div>
           `;
 

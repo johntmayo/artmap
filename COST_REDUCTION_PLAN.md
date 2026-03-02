@@ -1,0 +1,89 @@
+# Cost Reduction Plan
+
+This document captures what was changed to reduce run costs and what to do next.
+
+## Changes applied now
+
+### 1) Sync cadence reduced to 4x/day
+
+- File: `.github/workflows/sync.yml`
+- Change: cron moved from hourly to every 6 hours.
+- Before: `7 * * * *` (24 runs/day)
+- Now: `7 */6 * * *` (4 runs/day)
+
+Expected effect:
+- Lower GitHub Actions minutes.
+- Fewer auto-commits and potentially fewer downstream deployment triggers.
+
+### 2) Map tile usage reduced by default
+
+- File: `index.html`
+- Changes:
+  - Removed hardcoded Stadia API key from client bundle.
+  - Kept OpenStreetMap as default base map.
+  - Made Stadia watercolor optional in layer control (only shown if key is set).
+  - Made CARTO labels optional (not auto-enabled).
+  - Reduced default map `maxZoom` to 19.
+
+Expected effect:
+- Lower paid tile requests by default.
+- Reduced chance of exposed-key abuse from shipped client code.
+
+### 3) Sync image downloads now have budget controls
+
+- File: `scripts/sync-kml-to-geojson.mjs`
+- Changes:
+  - Added fetch timeout for remote calls.
+  - Added image count cap per run.
+  - Added total image bytes cap per run.
+  - Logs localized byte total per run.
+
+Default limits (overridable via env vars):
+- `SYNC_FETCH_TIMEOUT_MS=12000`
+- `SYNC_MAX_IMAGES=60`
+- `SYNC_MAX_IMAGE_BYTES=52428800` (50 MB)
+
+Expected effect:
+- Prevent runaway sync jobs from slow/large external media.
+- Make sync runtime and bandwidth costs more predictable.
+
+### 4) GeoJSON and media output is now trimmed per sync
+
+- File: `scripts/sync-kml-to-geojson.mjs`
+- Changes:
+  - Strips non-essential feature properties before writing output.
+  - Keeps only: `name`, `title`, `notes`, `description`, `icon-color`, `styleUrl`.
+  - Scans feature HTML for `./public/media/...` references.
+  - Deletes unreferenced files from `public/media`.
+  - Logs how many properties and media files were pruned each run.
+
+Default behavior flags:
+- `SYNC_STRIP_UNUSED_PROPERTIES=true` (set `false` to disable)
+- `SYNC_PRUNE_MEDIA=true` (set `false` to disable)
+
+Expected effect:
+- Smaller `public/data/art.geojson`.
+- Lower repository and deployment artifact growth over time.
+- Reduced hosting bandwidth for static assets.
+
+## Still recommended next
+
+1. Rotate and restrict any existing Stadia API key in Stadia dashboard.
+   - Restrict by site/domain referrer.
+   - Set strict usage limits/alerts.
+
+2. Verify Vercel budget controls are strict.
+   - Keep `Pause Production Deployments` enabled on budget exceed.
+   - Set On-Demand budget conservatively (or `0` for no overage).
+
+3. Add monthly spend review checkpoints.
+   - Vercel bandwidth/requests.
+   - GitHub Actions minutes.
+   - Stadia tile requests by referrer.
+
+## Quick rollback notes
+
+- To restore previous sync cadence, edit cron in `.github/workflows/sync.yml`.
+- To re-enable default labels, add `.addTo(map)` for `labelsLayer` in `index.html`.
+- To use Stadia watercolor layer, set a valid `STADIA_KEY` in `index.html` and keep it restricted on provider side.
+- To disable new sync pruning safeguards, set `SYNC_PRUNE_MEDIA=false` and/or `SYNC_STRIP_UNUSED_PROPERTIES=false`.
