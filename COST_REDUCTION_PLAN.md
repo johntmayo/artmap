@@ -16,16 +16,16 @@ Root cause:
 
 ## Changes applied now
 
-### 1) Sync cadence reduced to 4x/day
+### 1) Sync cadence reduced (4x/day → 2x/day)
 
 - File: `.github/workflows/sync.yml`
-- Change: cron moved from hourly to every 6 hours.
-- Before: `7 * * * *` (24 runs/day)
-- Now: `7 */6 * * *` (4 runs/day)
+- Change: cron moved from every 6 hours to every 12 hours.
+- Before: `7 */6 * * *` (4 runs/day)
+- Now: `7 */12 * * *` (2 runs/day)
 
 Expected effect:
 - Lower GitHub Actions minutes.
-- Fewer auto-commits and potentially fewer downstream deployment triggers.
+- Fewer auto-commits and fewer Vercel builds (each push = one build).
 
 ### 2) Map tile usage reduced by default
 
@@ -35,7 +35,7 @@ Expected effect:
   - Kept OpenStreetMap as default base map.
   - Made Stadia watercolor optional in layer control (only shown if key is set).
   - Made CARTO labels optional (not auto-enabled).
-  - Reduced default map `maxZoom` to 19.
+  - Map zoom capped: `minZoom: 10`, `maxZoom: 17` (was 19); all tile layers use `maxZoom: 17`.
 
 Expected effect:
 - Lower paid tile requests by default.
@@ -80,6 +80,18 @@ Expected effect:
 - Lower repository and deployment artifact growth over time.
 - Reduced hosting bandwidth for static assets.
 
+### 5) Vercel cache headers and zoom cap (latest)
+
+- File: `vercel.json` (new)
+  - `Cache-Control` for `/public/data/*`: 1 hour (`max-age=3600`) so repeat visitors don’t re-download GeoJSON every time.
+  - `Cache-Control` for `/public/media/*`: 7 days (`max-age=604800`); media filenames are content-hashed so long cache is safe.
+- File: `index.html`
+  - Map options: `minZoom: 10`, `maxZoom: 17`. OSM, watercolor, and CARTO labels all use `maxZoom: 17` to reduce tile requests (to OSM/CARTO and browser work).
+
+Expected effect:
+- Fewer Vercel bandwidth bytes for returning visitors (browser/CDN cache).
+- Fewer tile requests at high zoom levels.
+
 ## Current behavior (what to expect)
 
 - **Only some images in `public/media`:** The sync script localizes images up to the per-run limits (count, bytes, timeout). Images that hit limits or fail to download keep their **remote URLs** in the GeoJSON. So you may see e.g. 10–20 files in `public/media` while the map references more images—the rest load from the original URLs.
@@ -96,6 +108,12 @@ Expected effect:
 
 - `scripts/prune-media-from-geojson.mjs` removes files in `public/media` that are not referenced in `public/data/art.geojson`. Run with: `node scripts/prune-media-from-geojson.mjs`. The main sync already runs this logic each time; use the script only if you need to prune without a full sync.
 
+## What to check in Vercel (so it doesn’t “go crazy again”)
+
+- **Usage tab (Dashboard → Usage):** See whether **Bandwidth** or **Builds** (or both) are driving overage. For this static site, those are the only two that matter. Check “Current billing period” and “Top Paths” if available.
+- **Spend Management (Settings → Billing):** Turn **Pause production deployments** **ON** when you’re ready (e.g. at the start of the next cycle, March 20). Until then, the site stays up; after you enable it, the next time you hit the on-demand budget, production will pause instead of overspending again.
+- **On-Demand budget:** You already have a cap ($20). Leave “Pause” off until March 20 if you want the site up for this window; then turn “Pause” on so the cap is enforced.
+
 ## Still recommended next
 
 1. Rotate and restrict any existing Stadia API key in Stadia dashboard.
@@ -103,17 +121,19 @@ Expected effect:
    - Set strict usage limits/alerts.
 
 2. Verify Vercel budget controls are strict.
-   - Keep `Pause Production Deployments` enabled on budget exceed.
-   - Set On-Demand budget conservatively (or `0` for no overage).
+   - **Enable “Pause production deployments”** when spend amount is reached (do this after this billing window if you want the site up until March 20).
+   - On-Demand budget is already set; keep it conservative (or `0` for no overage).
 
 3. Add monthly spend review checkpoints.
-   - Vercel bandwidth/requests.
+   - Vercel Usage (bandwidth, builds).
    - GitHub Actions minutes.
    - Stadia tile requests by referrer.
 
 ## Quick rollback notes
 
-- To restore previous sync cadence, edit cron in `.github/workflows/sync.yml`.
+- To restore previous sync cadence, edit cron in `.github/workflows/sync.yml` (e.g. `7 */6 * * *` for 4×/day).
 - To re-enable default labels, add `.addTo(map)` for `labelsLayer` in `index.html`.
+- To raise zoom again, change `minZoom`/`maxZoom` on the map and `maxZoom` on each tile layer in `index.html` (e.g. back to 19).
 - To use Stadia watercolor layer, set a valid `STADIA_KEY` in `index.html` and keep it restricted on provider side.
 - To disable new sync pruning safeguards, set `SYNC_PRUNE_MEDIA=false` and/or `SYNC_STRIP_UNUSED_PROPERTIES=false`.
+- To remove Vercel cache headers, delete or edit `vercel.json`.

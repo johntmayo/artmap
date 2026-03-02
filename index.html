@@ -347,17 +347,22 @@
         "https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg" +
         (STADIA_KEY ? "?api_key=" + encodeURIComponent(STADIA_KEY) : "");
 
-      const map = L.map("map", { zoomControl: false, attributionControl: false }).setView([34.19, -118.13], 13);
+      const map = L.map("map", {
+        zoomControl: false,
+        attributionControl: false,
+        minZoom: 10,
+        maxZoom: 17
+      }).setView([34.19, -118.13], 13);
 
       const osmFallback = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19
+        maxZoom: 17
       }).addTo(map);
 
       const watercolorLayer = STADIA_KEY
         ? L.tileLayer(watercolorUrl, {
             // Watercolor has finite native coverage; scale native tiles at higher zooms.
             maxNativeZoom: 16,
-            maxZoom: 19,
+            maxZoom: 17,
             opacity: 0.92,
             crossOrigin: true,
             // Keep fallback base visible when watercolor tiles fail.
@@ -377,7 +382,7 @@
         "https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png",
         {
           subdomains: "abcd",
-          maxZoom: 20,
+          maxZoom: 17,
           attribution: "",
           pane: "overlayPane"
         }
