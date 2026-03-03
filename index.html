@@ -341,7 +341,12 @@
         other: { label: "Other", color: "#666666", icon: "?", visible: false }
       };
 
-      // Basemap options. Keep third-party paid tiles opt-in by default.
+      // Basemap setup: OSM loads first as a silent fallback (always on, not shown in layer control).
+      // Stadia watercolor loads on top of OSM by default — free tier is 200,000 credits/month
+      // (~12,500 map loads), more than enough for this community map.
+      // If a watercolor tile fails, the OSM tile underneath shows through automatically.
+      // CARTO labels sit above both layers. Users can toggle watercolor/labels via the overlay
+      // control (bottom-right corner).
       const STADIA_KEY = "2e4ff880-1782-4c64-a908-c2a37db897fe";
       const watercolorUrl =
         "https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg" +
