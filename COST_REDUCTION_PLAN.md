@@ -41,6 +41,8 @@ Expected effect:
 - Lower paid tile requests by default.
 - Reduced chance of exposed-key abuse from shipped client code.
 
+**Update (session 2):** The Stadia watercolor layer was not rendering because `STADIA_KEY` was empty. The key has been restored to `index.html`. The layer now works again. Key should be restricted by domain referrer in the Stadia dashboard to prevent abuse (see "Still recommended next" below).
+
 ### 3) Sync image downloads now have budget controls
 
 - File: `scripts/sync-kml-to-geojson.mjs`
@@ -53,11 +55,19 @@ Expected effect:
 Default limits (overridable via env vars):
 - `SYNC_FETCH_TIMEOUT_MS=12000`
 - `SYNC_MAX_IMAGES=60`
-- `SYNC_MAX_IMAGE_BYTES=52428800` (50 MB)
+- `SYNC_MAX_IMAGE_BYTES=52428800` (50 MB, **updated in session 2 — see below**)
 
 Expected effect:
 - Prevent runaway sync jobs from slow/large external media.
 - Make sync runtime and bandwidth costs more predictable.
+
+**Update (session 2):** Two changes made to `scripts/sync-kml-to-geojson.mjs`:
+
+1. **Image resize before download.** Added `resizeGoogleImageUrl()`, which rewrites `fife=s16383` to `fife=s1280` in the Google image URL before fetching. Google honors this parameter and serves a 1280 px version (~300 KB) instead of the full-resolution poster-size version (~4.5 MB). 1280 px remains visually sharp at the popup gallery's display size (108–220 px tall, ~440 px on retina).
+
+2. **Byte budget raised from 50 MB to 250 MB.** At the original 50 MB limit, only 11 of 42 images were being downloaded (each ~4.5 MB exhausted the budget quickly). At ~300 KB per image, 250 MB covers ~800 images — well past the expected 100–500 pin ceiling.
+
+Side effect of session 2 changes: the 11 already-downloaded full-resolution images will be replaced by smaller versions on the next sync. Their content-hash filenames will change, and the prune step will automatically delete the old large files. The `public/media` folder will shrink considerably.
 
 ### 4) GeoJSON and media output is now trimmed per sync
 
@@ -94,9 +104,10 @@ Expected effect:
 
 ## Current behavior (what to expect)
 
-- **Only some images in `public/media`:** The sync script localizes images up to the per-run limits (count, bytes, timeout). Images that hit limits or fail to download keep their **remote URLs** in the GeoJSON. So you may see e.g. 10–20 files in `public/media` while the map references more images—the rest load from the original URLs.
-- **Users always see images when they click:** Popups use `<img src="...">`. If the image was localized, `src` points to `./public/media/...`; otherwise it points to the remote URL. Either way, the image displays. No extra cost or storage for the remote ones.
+- **All images in `public/media` (after session 2 sync runs):** With the raised byte budget and image resizing, all images should now be downloaded locally on each sync. Images are served by Vercel as static files with correct content types.
+- **Remote URLs show broken images:** Google serves My Maps images without a proper `Content-Type` header (`application/octet-stream` instead of `image/jpeg`). Browsers display a broken image icon. Clicking downloads a nameless file; renaming it to `.jpg` reveals a valid image. This is why local hosting is essential — Vercel serves files with correct content types automatically.
 - **No more duplicate explosion:** Content-hash naming plus pruning means the same image is never stored multiple times, and unreferenced files are removed each sync. Storage and cost stay bounded.
+- **After a sync runs:** Images that were previously remote Google URLs will be re-downloaded locally. The prune step removes old full-resolution files automatically. No manual cleanup needed.
 
 ## KML sync setup
 
@@ -134,6 +145,26 @@ Expected effect:
 - To restore previous sync cadence, edit cron in `.github/workflows/sync.yml` (e.g. `7 */6 * * *` for 4×/day).
 - To re-enable default labels, add `.addTo(map)` for `labelsLayer` in `index.html`.
 - To raise zoom again, change `minZoom`/`maxZoom` on the map and `maxZoom` on each tile layer in `index.html` (e.g. back to 19).
-- To use Stadia watercolor layer, set a valid `STADIA_KEY` in `index.html` and keep it restricted on provider side.
+- To disable Stadia watercolor layer, clear `STADIA_KEY` in `index.html` (set to `""`). Key is currently active; restrict by domain in the Stadia dashboard.
 - To disable new sync pruning safeguards, set `SYNC_PRUNE_MEDIA=false` and/or `SYNC_STRIP_UNUSED_PROPERTIES=false`.
 - To remove Vercel cache headers, delete or edit `vercel.json`.
+
+---
+
+## Session log
+
+### Session 1 (initial cost-reduction work)
+Applied all changes described above: reduced sync cadence, removed Stadia key, added budget controls, switched to content-hash media naming, added pruning, added Vercel cache headers.
+
+### Session 2 (2026-03-03)
+
+**Issue 1 — Watercolor layer not rendering**
+- Root cause: `STADIA_KEY` was empty after session 1 changes; the layer silently showed nothing.
+- Fix: Restored the Stadia API key to `const STADIA_KEY` in `index.html`.
+- Deployment note: GitHub PR merge failed ("We couldn't merge this pull request") due to the automated sync job pushing a new commit to `main` between branch creation and merge attempt. Workaround: manually promoted the Vercel Preview deployment to Production. For subsequent PRs, branch is rebased on latest `main` before pushing to prevent this.
+
+**Issue 2 — Popup images showing as broken**
+- Root cause: Google serves My Maps images without a proper `Content-Type` header. Browsers display a broken icon instead of the image. The sync script was already designed to fix this by downloading images locally, but only 11 of 42 images had been downloaded — the 50 MB byte budget was exhausted because Google was serving images at full resolution (~4.5 MB each, via `fife=s16383`).
+- Fix 1: Added `resizeGoogleImageUrl()` in `scripts/sync-kml-to-geojson.mjs` to rewrite `fife=s16383` → `fife=s1280` before downloading. Images drop from ~4.5 MB to ~300 KB each.
+- Fix 2: Raised `MAX_IMAGE_BYTES` from 50 MB to 250 MB. Covers ~800 images at the new size.
+- **Required action:** Manually trigger the sync workflow (GitHub Actions → "Sync My Maps data" → Run workflow) after merging. This will download all 31 previously-skipped images and fix the broken popups.

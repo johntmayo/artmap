@@ -11,7 +11,7 @@ const IMG_SRC_RE = /(<img\b[^>]*\bsrc=["'])(https?:\/\/[^"']+)(["'][^>]*>)/gi;
 const LOCAL_MEDIA_SRC_RE = /(?:\.\/)?public\/media\/([^"'?#\s>]+)/gi;
 const FETCH_TIMEOUT_MS = Number(process.env.SYNC_FETCH_TIMEOUT_MS || 12000);
 const MAX_IMAGE_DOWNLOADS = Number(process.env.SYNC_MAX_IMAGES || 60);
-const MAX_IMAGE_BYTES = Number(process.env.SYNC_MAX_IMAGE_BYTES || 50 * 1024 * 1024);
+const MAX_IMAGE_BYTES = Number(process.env.SYNC_MAX_IMAGE_BYTES || 250 * 1024 * 1024);
 const SYNC_PRUNE_MEDIA = process.env.SYNC_PRUNE_MEDIA !== "false";
 const SYNC_STRIP_UNUSED_PROPERTIES = process.env.SYNC_STRIP_UNUSED_PROPERTIES !== "false";
 const KEPT_PROPERTY_KEYS = ["name", "title", "notes", "description", "icon-color", "styleUrl"];
@@ -92,6 +92,12 @@ function extensionFromUrl(url) {
   }
 }
 
+function resizeGoogleImageUrl(url) {
+  // Request a 1280px version instead of the default full-resolution (s16383).
+  // 1280px is sharp on retina displays; the popup gallery shows images at ~220px tall.
+  return url.replace(/([?&]fife=)s\d+/, "$1s1280");
+}
+
 async function downloadImageToLocal(url, cache, budget) {
   if (cache.has(url)) return cache.get(url);
   if (budget.downloadedCount >= MAX_IMAGE_DOWNLOADS) {
@@ -99,7 +105,8 @@ async function downloadImageToLocal(url, cache, budget) {
     return url;
   }
 
-  const res = await fetchWithTimeout(url, {
+  const fetchUrl = resizeGoogleImageUrl(url);
+  const res = await fetchWithTimeout(fetchUrl, {
     headers: {
       "User-Agent": "my-pretty-art-map-sync",
       "Accept": "image/*,*/*;q=0.8",
