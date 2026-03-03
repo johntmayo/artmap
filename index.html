@@ -365,7 +365,7 @@
             maxZoom: 17,
             opacity: 0.92,
             crossOrigin: true,
-            // Keep fallback base visible when watercolor tiles fail.
+            // Transparent pixel so OSM fallback shows through on tile errors.
             errorTileUrl:
               "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=",
             attribution: ""
@@ -376,6 +376,7 @@
         watercolorLayer.on("tileerror", () => {
           // Avoid noisy console floods in production; fallback layer is underneath.
         });
+        watercolorLayer.addTo(map);
       }
 
       const labelsLayer = L.tileLayer(
@@ -386,18 +387,14 @@
           attribution: "",
           pane: "overlayPane"
         }
-      );
-
-      const baseLayers = {
-        OpenStreetMap: osmFallback
-      };
-      if (watercolorLayer) baseLayers["Watercolor (Stadia)"] = watercolorLayer;
+      ).addTo(map);
 
       const overlayLayers = {
+        "Watercolor (Stadia)": watercolorLayer,
         "Street labels": labelsLayer
       };
 
-      L.control.layers(baseLayers, overlayLayers, { collapsed: true, position: "bottomright" }).addTo(map);
+      L.control.layers(null, overlayLayers, { collapsed: true, position: "bottomright" }).addTo(map);
 
       createTitleControl().addTo(map);
       createLegalControl().addTo(map);
@@ -484,7 +481,7 @@
             <div class="legal-details">
               Map created by
               <a href="https://sites.google.com/view/joysquadcentral/home" target="_blank" rel="noopener noreferrer">Altadena Joy Squad</a>.<br />
-              © OpenStreetMap contributors • Optional watercolor tiles via Stadia Maps • Labels by CARTO
+              © OpenStreetMap contributors • Watercolor tiles via Stadia Maps • Labels by CARTO
             </div>
           `;
 
