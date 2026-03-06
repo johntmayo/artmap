@@ -66,11 +66,11 @@
         "title": "Beautiful Altadena Mural",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/4f4ef03122698bb784f91999508783d376889580.png\" height=\"200\" width=\"auto\" /><br><br>"
+          "value": "<img src=\"./public/media/d583c1f527c931f8213cc92e033f50b23f9ff1f9.png\" height=\"200\" width=\"auto\" /><br><br>"
         },
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/4f4ef03122698bb784f91999508783d376889580.png\" height=\"200\" width=\"auto\" /><br><br>"
+          "value": "<img src=\"./public/media/d583c1f527c931f8213cc92e033f50b23f9ff1f9.png\" height=\"200\" width=\"auto\" /><br><br>"
         },
         "icon-color": "#0288d1",
         "styleUrl": "#icon-1509-0288D1"
@@ -185,11 +185,11 @@
         "title": "This might take a while Mural",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/d6c829cbe3eb5162fe132f5614554e604699722a.png\" height=\"200\" width=\"auto\" /><br><br>White wall with black text<br><br><img src=\"./public/media/1be000f4db0ce9e5159f6918efecde589c7e74ae.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/bc94bc0553267ec4ae5547ae99037f0b801ed0f2.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/fab66e98719dfe3ef46d5015a6eedf766f33236f.png\" height=\"200\" width=\"auto\" />"
+          "value": "<img src=\"./public/media/fab66e98719dfe3ef46d5015a6eedf766f33236f.png\" height=\"200\" width=\"auto\" /><br><br>White wall with black text<br><br><img src=\"./public/media/d6c829cbe3eb5162fe132f5614554e604699722a.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/1be000f4db0ce9e5159f6918efecde589c7e74ae.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/bc94bc0553267ec4ae5547ae99037f0b801ed0f2.png\" height=\"200\" width=\"auto\" />"
         },
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/d6c829cbe3eb5162fe132f5614554e604699722a.png\" height=\"200\" width=\"auto\" /><br><br>White wall with black text<br><br><img src=\"./public/media/1be000f4db0ce9e5159f6918efecde589c7e74ae.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/bc94bc0553267ec4ae5547ae99037f0b801ed0f2.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/fab66e98719dfe3ef46d5015a6eedf766f33236f.png\" height=\"200\" width=\"auto\" />"
+          "value": "<img src=\"./public/media/fab66e98719dfe3ef46d5015a6eedf766f33236f.png\" height=\"200\" width=\"auto\" /><br><br>White wall with black text<br><br><img src=\"./public/media/d6c829cbe3eb5162fe132f5614554e604699722a.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/1be000f4db0ce9e5159f6918efecde589c7e74ae.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/bc94bc0553267ec4ae5547ae99037f0b801ed0f2.png\" height=\"200\" width=\"auto\" />"
         },
         "icon-color": "#0288d1",
         "styleUrl": "#icon-1509-0288D1"
@@ -215,6 +215,31 @@
         "description": {
           "@type": "html",
           "value": "<img src=\"./public/media/dbdd6af90ac4127c8792e8add50ca88b2b724f07.png\" height=\"200\" width=\"auto\" /><br><br>"
+        },
+        "icon-color": "#0288d1",
+        "styleUrl": "#icon-1509-0288D1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.1315643,
+          34.1888448,
+          0
+        ]
+      },
+      "properties": {
+        "name": "Purple Mural",
+        "title": "Purple Mural",
+        "notes": {
+          "@type": "html",
+          "value": "<img src=\"./public/media/686d1aa5e71772fed627647e48331492866d69c5.png\" height=\"200\" width=\"auto\" /><br><br>"
+        },
+        "description": {
+          "@type": "html",
+          "value": "<img src=\"./public/media/686d1aa5e71772fed627647e48331492866d69c5.png\" height=\"200\" width=\"auto\" /><br><br>"
         },
         "icon-color": "#0288d1",
         "styleUrl": "#icon-1509-0288D1"
@@ -310,11 +335,11 @@
         "title": "Altadena not for sale Signpost",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/917c877e6bce16d30ba983b7bce640ab763fa6fc.png\" height=\"200\" width=\"auto\" /><br><br>"
+          "value": "<img src=\"./public/media/917c877e6bce16d30ba983b7bce640ab763fa6fc.png\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"./public/media/ab04d81ac21e6297030933ed67f314f979ed3fc5.png\" height=\"200\" width=\"auto\" />"
         },
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/917c877e6bce16d30ba983b7bce640ab763fa6fc.png\" height=\"200\" width=\"auto\" /><br><br>"
+          "value": "<img src=\"./public/media/917c877e6bce16d30ba983b7bce640ab763fa6fc.png\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"./public/media/ab04d81ac21e6297030933ed67f314f979ed3fc5.png\" height=\"200\" width=\"auto\" />"
         },
         "icon-color": "#a52714",
         "styleUrl": "#icon-1599-A52714"
@@ -385,11 +410,11 @@
         "title": "Well dressed skeleton",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/9aa915988e5c83ee365ffc47c20927338b881b06.png\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"./public/media/db87781789e13c841dee7103050f44134b0b7ab1.png\" height=\"200\" width=\"auto\" />"
+          "value": "<img src=\"./public/media/db87781789e13c841dee7103050f44134b0b7ab1.png\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"./public/media/9aa915988e5c83ee365ffc47c20927338b881b06.png\" height=\"200\" width=\"auto\" />"
         },
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/9aa915988e5c83ee365ffc47c20927338b881b06.png\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"./public/media/db87781789e13c841dee7103050f44134b0b7ab1.png\" height=\"200\" width=\"auto\" />"
+          "value": "<img src=\"./public/media/db87781789e13c841dee7103050f44134b0b7ab1.png\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"./public/media/9aa915988e5c83ee365ffc47c20927338b881b06.png\" height=\"200\" width=\"auto\" />"
         },
         "icon-color": "#a52714",
         "styleUrl": "#icon-1599-A52714"
@@ -460,11 +485,11 @@
         "title": "It's okay to rest",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/3f9baf355d35b2608da91640e7eaaa8a0fdd1bd8.png\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"./public/media/a4996392019b9a9a8cf62f0f2dd7258e9120e818.png\" height=\"200\" width=\"auto\" />"
+          "value": "<img src=\"./public/media/6dad237c56d0e1d543cb5abbac682846543b10db.png\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"./public/media/3f9baf355d35b2608da91640e7eaaa8a0fdd1bd8.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/8ebac76046b12c3b780fe0c5215faa0cf5df466b.png\" height=\"200\" width=\"auto\" />"
         },
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/3f9baf355d35b2608da91640e7eaaa8a0fdd1bd8.png\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"./public/media/a4996392019b9a9a8cf62f0f2dd7258e9120e818.png\" height=\"200\" width=\"auto\" />"
+          "value": "<img src=\"./public/media/6dad237c56d0e1d543cb5abbac682846543b10db.png\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"./public/media/3f9baf355d35b2608da91640e7eaaa8a0fdd1bd8.png\" height=\"200\" width=\"auto\" /><br><br><img src=\"./public/media/8ebac76046b12c3b780fe0c5215faa0cf5df466b.png\" height=\"200\" width=\"auto\" />"
         },
         "icon-color": "#f9a825",
         "styleUrl": "#icon-1854-F9A825"
@@ -535,11 +560,11 @@
         "title": "Prayer Flags",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/0f5d22889f9324e098ff17fa85e15a9c2c18dc48.png\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"./public/media/e5dda875e736d547c04bbd949336ac7c45f9170e.png\" height=\"200\" width=\"auto\" />"
+          "value": "<img src=\"./public/media/e5dda875e736d547c04bbd949336ac7c45f9170e.png\" height=\"200\" width=\"auto\" /><br><br>"
         },
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/0f5d22889f9324e098ff17fa85e15a9c2c18dc48.png\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"./public/media/e5dda875e736d547c04bbd949336ac7c45f9170e.png\" height=\"200\" width=\"auto\" />"
+          "value": "<img src=\"./public/media/e5dda875e736d547c04bbd949336ac7c45f9170e.png\" height=\"200\" width=\"auto\" /><br><br>"
         },
         "icon-color": "#f9a825",
         "styleUrl": "#icon-1854-F9A825"
