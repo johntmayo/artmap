@@ -116,11 +116,11 @@
         "title": "Butterfly Mural",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/8e7cd684d353fd29fb34e6d40b10ebb249cd7a9b.png\" height=\"200\" width=\"auto\" /><br><br>"
+          "value": "<img src=\"./public/media/39d4d8756aa5796396fd7f4b4bd929797753c1cf.png\" height=\"200\" width=\"auto\" /><br><br>"
         },
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/8e7cd684d353fd29fb34e6d40b10ebb249cd7a9b.png\" height=\"200\" width=\"auto\" /><br><br>"
+          "value": "<img src=\"./public/media/39d4d8756aa5796396fd7f4b4bd929797753c1cf.png\" height=\"200\" width=\"auto\" /><br><br>"
         },
         "icon-color": "#0288d1",
         "styleUrl": "#icon-1509-0288D1"
@@ -260,11 +260,11 @@
         "title": "Altadena Strong Skeleton",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/a844a0ae5ac9954f3d855c0f4bf30082b6273a77.png\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"./public/media/3cab7d4953a16d7bedc863e1490a54fb6db98949.png\" height=\"200\" width=\"auto\" />"
+          "value": "<img src=\"./public/media/a844a0ae5ac9954f3d855c0f4bf30082b6273a77.png\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"./public/media/5ed9624554932f49451ef46e7191150df604f29a.png\" height=\"200\" width=\"auto\" />"
         },
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/a844a0ae5ac9954f3d855c0f4bf30082b6273a77.png\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"./public/media/3cab7d4953a16d7bedc863e1490a54fb6db98949.png\" height=\"200\" width=\"auto\" />"
+          "value": "<img src=\"./public/media/a844a0ae5ac9954f3d855c0f4bf30082b6273a77.png\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"./public/media/5ed9624554932f49451ef46e7191150df604f29a.png\" height=\"200\" width=\"auto\" />"
         },
         "icon-color": "#a52714",
         "styleUrl": "#icon-1599-A52714"
@@ -335,11 +335,11 @@
         "title": "Altadena not for sale Signpost",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/917c877e6bce16d30ba983b7bce640ab763fa6fc.png\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"./public/media/ab04d81ac21e6297030933ed67f314f979ed3fc5.png\" height=\"200\" width=\"auto\" />"
+          "value": "<img src=\"./public/media/5af14f8c48d9fbfccc43fb1f67c3229ec54e7127.png\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"./public/media/ab04d81ac21e6297030933ed67f314f979ed3fc5.png\" height=\"200\" width=\"auto\" />"
         },
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/917c877e6bce16d30ba983b7bce640ab763fa6fc.png\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"./public/media/ab04d81ac21e6297030933ed67f314f979ed3fc5.png\" height=\"200\" width=\"auto\" />"
+          "value": "<img src=\"./public/media/5af14f8c48d9fbfccc43fb1f67c3229ec54e7127.png\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"./public/media/ab04d81ac21e6297030933ed67f314f979ed3fc5.png\" height=\"200\" width=\"auto\" />"
         },
         "icon-color": "#a52714",
         "styleUrl": "#icon-1599-A52714"
@@ -535,11 +535,11 @@
         "title": "Mosaic Butterflies",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/88ecd6b6327c4fdd3c6d5cc40d034c84e4ab4574.png\" height=\"200\" width=\"auto\" /><br><br>By Flaco https://www.flacomosaics.com/"
+          "value": "<img src=\"./public/media/5f64427c7de66f00fad85c53d8ff6c350273d020.png\" height=\"200\" width=\"auto\" /><br><br>By Flaco https://www.flacomosaics.com/"
         },
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/88ecd6b6327c4fdd3c6d5cc40d034c84e4ab4574.png\" height=\"200\" width=\"auto\" /><br><br>By Flaco https://www.flacomosaics.com/"
+          "value": "<img src=\"./public/media/5f64427c7de66f00fad85c53d8ff6c350273d020.png\" height=\"200\" width=\"auto\" /><br><br>By Flaco https://www.flacomosaics.com/"
         },
         "icon-color": "#f9a825",
         "styleUrl": "#icon-1854-F9A825"
