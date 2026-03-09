@@ -560,11 +560,11 @@
         "title": "Prayer Flags",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/2426b853887f2c5964d3e1e939faff42c1c751ef.png\" height=\"200\" width=\"auto\" /><br><br>"
+          "value": "<img src=\"./public/media/e5dda875e736d547c04bbd949336ac7c45f9170e.png\" height=\"200\" width=\"auto\" /><br><br>"
         },
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/2426b853887f2c5964d3e1e939faff42c1c751ef.png\" height=\"200\" width=\"auto\" /><br><br>"
+          "value": "<img src=\"./public/media/e5dda875e736d547c04bbd949336ac7c45f9170e.png\" height=\"200\" width=\"auto\" /><br><br>"
         },
         "icon-color": "#f9a825",
         "styleUrl": "#icon-1854-F9A825"
@@ -685,11 +685,11 @@
         "title": "Tied Together Ribbons",
         "notes": {
           "@type": "html",
-          "value": "<img src=\"./public/media/2ed5a4a0b6bb49edde7eceee70e9451a85e40a2c.png\" height=\"200\" width=\"auto\" /><br><br>Interactive ribbon"
+          "value": "<img src=\"./public/media/12219dce513f199a366f74ea636573402a19d3ab.png\" height=\"200\" width=\"auto\" /><br><br>Interactive ribbon"
         },
         "description": {
           "@type": "html",
-          "value": "<img src=\"./public/media/2ed5a4a0b6bb49edde7eceee70e9451a85e40a2c.png\" height=\"200\" width=\"auto\" /><br><br>Interactive ribbon"
+          "value": "<img src=\"./public/media/12219dce513f199a366f74ea636573402a19d3ab.png\" height=\"200\" width=\"auto\" /><br><br>Interactive ribbon"
         },
         "icon-color": "#f9a825",
         "styleUrl": "#icon-1854-F9A825"
